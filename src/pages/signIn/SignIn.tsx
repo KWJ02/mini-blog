@@ -25,7 +25,7 @@ const SignIn = () => {
 					type="text"
 					value={id}
 					onChange={idInput}
-					marginTop="24px"
+					marginTop="80px"
 					maxLength={20}
 					label="User Account"
 				/>
@@ -48,7 +48,19 @@ const SignIn = () => {
 					</div>
 				</div>
 
-				<Button value="Login" />
+				<Button
+					value="Login"
+					width="100%"
+					height="40px"
+					display="flex"
+					alignItems="center"
+					justifyContent="center"
+					backgroundColor="ivory"
+					borderRadius="12px"
+					boxShadow="0 2px 4px rgba(0,0,0,0.1)"
+					cursor="pointer"
+					marginTop="auto"
+				/>
 			</div>
 		</div>
 	);

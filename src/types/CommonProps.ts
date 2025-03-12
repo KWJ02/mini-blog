@@ -32,4 +32,5 @@ export interface CommonProps {
 	bottom?: string;
 	left?: string;
 	zIndex?: number;
+	border?: string;
 }
