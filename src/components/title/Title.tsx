@@ -1,6 +1,7 @@
-interface TitleProps {
+import { CommonProps } from 'types/CommonProps';
+
+interface TitleProps extends CommonProps {
 	title: string;
-	fontSize?: string;
 }
 
 const Title = ({ fontSize = '1.5rem', ...props }: TitleProps) => {

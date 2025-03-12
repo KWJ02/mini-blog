@@ -1,7 +1,8 @@
 import style from './Input.module.css';
+import { CommonProps } from 'types/CommonProps';
 import { ChangeEvent } from 'react';
 
-interface InputProps {
+interface InputProps extends CommonProps {
 	value: string;
 	type: string;
 	name?: string;
@@ -10,10 +11,6 @@ interface InputProps {
 	maxLength?: number;
 	autoFocus?: boolean;
 	label?: string;
-	width?: string;
-	height?: string;
-	marginTop?: string;
-	marginBottom?: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

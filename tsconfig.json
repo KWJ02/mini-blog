@@ -15,7 +15,8 @@
 			"components/*": ["components/*"],
 			"pages/*": ["pages/*"],
 			"assets/*": ["assets/*"],
-			"route/*": ["route/*"]
+			"route/*": ["route/*"],
+			"types/*": ["types/*"]
 		}
 	},
 

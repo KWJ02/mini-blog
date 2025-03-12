@@ -1,0 +1,35 @@
+export interface CommonProps {
+	width?: string;
+	height?: string;
+	borderRadius?: string;
+	backgroundColor?: string;
+	color?: string;
+	padding?: string;
+	paddingTop?: string;
+	paddingRight?: string;
+	paddingBottom?: string;
+	paddingLeft?: string;
+	margin?: string;
+	marginTop?: string;
+	marginRight?: string;
+	marginBottom?: string;
+	marginLeft?: string;
+	display?: string;
+	flexDirection?: string;
+	justifyContent?: string;
+	alignItems?: string;
+	textAlign?: string;
+	fontSize?: string;
+	fontWeight?: string;
+	lineHeight?: string;
+	letterSpacing?: string;
+	boxShadow?: string;
+	opacity?: number;
+	cursor?: string;
+	position?: string;
+	top?: string;
+	right?: string;
+	bottom?: string;
+	left?: string;
+	zIndex?: number;
+}
