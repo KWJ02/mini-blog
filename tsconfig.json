@@ -1,17 +1,22 @@
 {
 	"compilerOptions": {
-		"jsx": "react",
-		"target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-		// "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
-		// "jsx": "preserve",                                /* Specify what JSX code is generated. */
-		"module": "commonjs" /* Specify what module code is generated. */,
-		// "rootDir": "./",                                  /* Specify the root folder within your source files. */
-		// "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-		// "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
-		// "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
-		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-		"forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-		"strict": true /* Enable all strict type-checking options. */,
-		"skipLibCheck": true /* Skip type checking all .d.ts files. */
-	}
+		"jsx": "react-jsx", // 최신 JSX 변환 방식 사용
+		"target": "es2016", // JavaScript 언어 버전 설정
+		"module": "commonjs", // CommonJS 모듈 사용
+		"esModuleInterop": true, // CommonJS 모듈을 React와 호환되도록 추가 코드 생성
+		"forceConsistentCasingInFileNames": true, // 대소문자 구분 강제
+		"strict": true, // 모든 엄격한 타입 체크 옵션 활성화
+		"skipLibCheck": true, // .d.ts 파일의 타입 체크를 생략
+		"moduleResolution": "node", // Node.js 방식으로 모듈 해석
+		"resolveJsonModule": true, // JSON 모듈을 가져오는 기능 활성화
+		"allowJs": true, // JavaScript 파일도 허용
+		"baseUrl": "src", // 절대 경로를 사용하기 위한 Base 디렉토리를 설정한다.
+		"paths": {
+			"components/*": ["components/*"],
+			"pages/*": ["pages/*"],
+			"assets/*": ["assets/*"]
+		}
+	},
+
+	"include": ["src"]
 }

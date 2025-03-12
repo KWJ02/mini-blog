@@ -1,7 +1,12 @@
-import React from 'react';
+import style from './App.module.css';
+import Home from './pages/Home';
 
 function App() {
-	return <div className="App">gd</div>;
+	return (
+		<div className={style.root}>
+			<Home />
+		</div>
+	);
 }
 
 export default App;

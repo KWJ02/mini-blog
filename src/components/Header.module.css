@@ -1,0 +1,25 @@
+.root {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 1px black;
+	padding: 12px;
+	box-sizing: border-box;
+}
+
+.backBtn {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.title {
+	font-size: 1.5rem;
+}
+
+.icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
