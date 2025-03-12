@@ -1,4 +1,6 @@
 import style from './Header.module.css';
+import backButton from 'assets/icon_backButton.svg';
+import user from 'assets/icon_user.svg';
 
 interface HeaderProps {
 	backBtn?: boolean;
@@ -12,9 +14,27 @@ const Header = ({ ...props }: HeaderProps) => {
 
 	return (
 		<div className={style.root}>
-			{backBtnFlag && <div className={style.backBtn}>뒤로가기</div>}
+			{backBtnFlag && (
+				<div className={style.backBtnContainer}>
+					<img
+						className={style.backBtn}
+						src={backButton}
+						alt="back"
+						width="24px"
+					/>
+				</div>
+			)}
 			<div className={style.title}>{props.title}</div>
-			{iconFlag && <div className={style.icon}>아이콘</div>}
+			{iconFlag && (
+				<div className={style.iconContainer}>
+					<img
+						className={style.icon}
+						src={user}
+						alt="user"
+						width="24px"
+					/>
+				</div>
+			)}
 		</div>
 	);
 };
