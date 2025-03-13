@@ -49,7 +49,7 @@ const SignIn = () => {
 				</div>
 
 				<Button
-					value="Login"
+					value="Sign In"
 					width="100%"
 					height="40px"
 					display="flex"

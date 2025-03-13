@@ -32,20 +32,12 @@
 
 .signUpBtnBackground {
 	width: fit-content;
-	background-color: black;
 	border-radius: 12px;
 	padding: 4px;
 	transition: all 0.2s ease;
 }
 
-.signUpBtnBackground:hover {
-	background-color: ivory;
-}
-
-.signUpBtnBackground:hover .signUpBtn {
-	color: black;
-}
-
 .signUpBtn {
-	color: ivory;
+	color: black;
+	border-bottom: solid 1px black;
 }
