@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from 'pages/Home';
-import SignIn from 'pages/signIn/SignIn';
-import SignUp from 'pages/signUp/SignUp';
+import Home from '@/pages/Home';
+import SignIn from '@/pages/signIn/SignIn';
+import SignUp from '@/pages/signUp/SignUp';
 
 const RoutesConfig = () => {
 	return (

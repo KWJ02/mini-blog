@@ -12,8 +12,8 @@
 	min-width: 400px;
 	max-width: 400px;
 	width: 100%;
-	height: 500px;
-	min-height: 500px;
+	height: 440px;
+	min-height: 440px;
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;

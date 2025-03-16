@@ -1,8 +1,8 @@
 import style from './SignUp.module.css';
-import Title from 'components/title/Title';
-import Input from 'components/input/Input';
-import Button from 'components/button/Button';
-import Header from 'components/header/Header';
+import Title from '@/components/title/Title';
+import Input from '@/components/input/Input';
+import Button from '@/components/button/Button';
+import Header from '@/components/header/Header';
 import { useState, ChangeEvent } from 'react';
 
 const SignUp = () => {
@@ -35,7 +35,7 @@ const SignUp = () => {
 						type="text"
 						value={id}
 						onChange={idInput}
-						marginTop="40px"
+						marginTop="20px"
 						maxLength={20}
 						label="ID"
 					/>

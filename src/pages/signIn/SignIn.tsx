@@ -1,7 +1,7 @@
 import style from './SignIn.module.css';
-import Title from 'components/title/Title';
-import Input from 'components/input/Input';
-import Button from 'components/button/Button';
+import Title from '@/components/title/Title';
+import Input from '@/components/input/Input';
+import Button from '@/components/button/Button';
 import { Link } from 'react-router-dom';
 import { useState, ChangeEvent } from 'react';
 

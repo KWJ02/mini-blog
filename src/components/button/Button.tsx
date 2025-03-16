@@ -1,4 +1,4 @@
-import { CommonProps } from 'types/CommonProps';
+import { CommonProps } from '@/types/CommonProps';
 import style from './Button.module.css';
 
 interface ButtonProps extends CommonProps {

@@ -1,5 +1,5 @@
 import style from './Input.module.css';
-import { CommonProps } from 'types/CommonProps';
+import { CommonProps } from '@/types/CommonProps';
 import { ChangeEvent } from 'react';
 
 interface InputProps extends CommonProps {
