@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "es2015"],
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./", // backend 폴더 자체를 루트로 지정
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["**/*.ts"], // backend 폴더 내 모든 .ts 파일을 포함
+	"exclude": ["node_modules"]
+}

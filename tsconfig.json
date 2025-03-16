@@ -16,7 +16,8 @@
 			"pages/*": ["pages/*"],
 			"assets/*": ["assets/*"],
 			"route/*": ["route/*"],
-			"types/*": ["types/*"]
+			"types/*": ["types/*"],
+			"utils/*": ["utils/*"]
 		}
 	},
 
