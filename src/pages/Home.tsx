@@ -1,5 +1,5 @@
 // rsc => rafce로 대체
-import Header from '@/components/header/Header';
+import Header from 'components/header/Header';
 
 const Home = () => {
 	return (

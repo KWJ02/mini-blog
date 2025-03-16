@@ -10,14 +10,13 @@
 		"moduleResolution": "node", // Node.js 방식으로 모듈 해석
 		"resolveJsonModule": true, // JSON 모듈을 가져오는 기능 활성화
 		"allowJs": true, // JavaScript 파일도 허용
-		"baseUrl": ".", // 절대 경로를 사용하기 위한 Base 디렉토리를 설정한다.
+		"baseUrl": "src", // 절대 경로를 사용하기 위한 Base 디렉토리를 설정한다.
 		"paths": {
-			"@/*": ["src/*"],
-			"@/components/*": ["src/components/*"],
-			"@/pages/*": ["src/pages/*"],
-			"@/assets/*": ["src/assets/*"],
-			"@/route/*": ["src/route/*"],
-			"@/types/*": ["src/types/*"]
+			"components/*": ["components/*"],
+			"pages/*": ["pages/*"],
+			"assets/*": ["assets/*"],
+			"route/*": ["route/*"],
+			"types/*": ["types/*"]
 		}
 	},
 
