@@ -1,4 +1,3 @@
-// backend/controllers/postController.ts
 import { Request, Response } from 'express';
 import { getAllPosts } from '../models/postModel';
 

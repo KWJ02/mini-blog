@@ -1,4 +1,3 @@
-// backend/models/postModel.ts
 import Post from '../dummy/dummy';
 
 export const getAllPosts = async () => {

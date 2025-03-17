@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'; // 히스토리 기반으로 이
 
 interface HeaderProps {
 	backBtn?: boolean;
-	title: string;
+	value: string;
 	icon?: boolean;
 }
 
@@ -29,7 +29,7 @@ const Header = ({ ...props }: HeaderProps) => {
 					/>
 				</div>
 			)}
-			<Title title="Mini Blog" />
+			<Title value={props.value} />
 			{iconFlag && (
 				<div className={style.iconContainer}>
 					<Link to="/signIn">

@@ -1,6 +1,6 @@
-import React from 'react';
+import { PostProps } from 'pages/postList/PostList';
 
-const Post = () => {
+const Post = ({ ...props }: PostProps) => {
 	return <div>Post</div>;
 };
 

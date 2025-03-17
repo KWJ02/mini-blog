@@ -12,11 +12,9 @@ const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
-app.use('/post', postRoutes);
 
-app.get('/post', (_, res) => {
-	res.send('zz');
-});
+// /post 주소로 요청이 들어오면 postRoutes 라우트에서 처리. 스프링 RequestMapping 애노테이션처럼 특정 주소 명시
+app.use('/post', postRoutes);
 
 app.listen(PORT, () => {
 	console.log(PORT + '실행중');

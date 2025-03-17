@@ -2,13 +2,13 @@ import style from './SignUp.module.css';
 import Title from 'components/title/Title';
 import Input from 'components/input/Input';
 import Button from 'components/button/Button';
-import Header from 'components/header/Header';
 import { useState, ChangeEvent } from 'react';
 
 const SignUp = () => {
 	const [id, setId] = useState<string>('');
 	const [pw, setPw] = useState<string>('');
 	const [confirmPw, setConfirmPw] = useState<string>('');
+	const [userName, setUserName] = useState<string>('');
 
 	const idInput = (e: ChangeEvent<HTMLInputElement>) => {
 		setId(e.target.value);
@@ -22,15 +22,15 @@ const SignUp = () => {
 		setConfirmPw(e.target.value);
 	};
 
+	const userNameInput = (e: ChangeEvent<HTMLInputElement>) => {
+		setUserName(e.target.value);
+	};
+
 	return (
 		<>
-			<Header
-				title="Mini Blog"
-				backBtn={true}
-			/>
 			<div className={style.root}>
 				<div className={style.signUpContainer}>
-					<Title title="Sign Up" />
+					<Title value="Sign Up" />
 					<Input
 						type="text"
 						value={id}
@@ -55,6 +55,14 @@ const SignUp = () => {
 						maxLength={20}
 						label="Confirm Password"
 					/>
+					<Input
+						type="text"
+						value={userName}
+						onChange={userNameInput}
+						marginTop="8px"
+						maxLength={30}
+						label="UserName"
+					/>
 
 					<Button
 						value="Sign Up"
@@ -67,7 +75,7 @@ const SignUp = () => {
 						borderRadius="12px"
 						boxShadow="0 2px 4px rgba(0,0,0,0.1)"
 						cursor="pointer"
-						marginTop="auto"
+						marginTop="12px"
 					/>
 				</div>
 			</div>

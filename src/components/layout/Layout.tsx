@@ -6,7 +6,20 @@ interface LayoutProps extends CommonProps {
 }
 
 const Layout = ({ children, ...props }: LayoutProps) => {
-	return <>{children}</>;
+	return (
+		<div
+			style={{
+				display: props.display,
+				flexDirection: props.flexDirection,
+				alignItems: props.alignItems,
+				justifyContent: props.justifyContent,
+				gap: props.gap,
+				width: props.width,
+			}}
+		>
+			{children}
+		</div>
+	);
 };
 
 export default Layout;

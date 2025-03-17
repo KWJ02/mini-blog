@@ -20,7 +20,7 @@ const SignIn = () => {
 	return (
 		<div className={style.root}>
 			<div className={style.signInContainer}>
-				<Title title="Mini Blog" />
+				<Title value="Mini Blog" />
 				<Input
 					type="text"
 					value={id}

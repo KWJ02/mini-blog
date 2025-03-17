@@ -1,8 +1,10 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
+import style from './PostList.module.css';
 import axiosInstace from 'utils/axiosInstace';
+import Post from 'pages/post/Post';
+import Layout from 'components/layout/Layout';
 
-interface Post {
+export interface PostProps {
 	id: number;
 	title: string;
 	content: string;
@@ -11,7 +13,7 @@ interface Post {
 }
 
 const PostList = () => {
-	const [posts, setPosts] = useState<Post[]>([]);
+	const [posts, setPosts] = useState<PostProps[]>([]);
 
 	useEffect(() => {
 		axiosInstace
@@ -24,16 +26,29 @@ const PostList = () => {
 			});
 	}, []);
 
-	useEffect(() => {
-		console.log(posts);
-	}, [posts]);
-
 	return (
-		<div>
+		<Layout
+			display="flex"
+			alignItems="center"
+			justifyContent="center"
+			flexDirection="column"
+			gap="8px"
+			maxWidth="800px"
+		>
 			{posts.map((post) => (
-				<div>{post.id}</div>
+				<ul className={style.postList}>
+					<li key={post.id}>
+						<Post
+							id={post.id}
+							title={post.title}
+							content={post.content}
+							author={post.author}
+							created_date={post.created_date}
+						/>
+					</li>
+				</ul>
 			))}
-		</div>
+		</Layout>
 	);
 };
 
