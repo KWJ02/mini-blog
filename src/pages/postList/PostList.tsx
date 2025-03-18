@@ -8,7 +8,7 @@ export interface PostProps {
 	id: number;
 	title: string;
 	content: string;
-	author: string;
+	userName: string;
 	date: string;
 }
 
@@ -40,7 +40,7 @@ const PostList = () => {
 							id={post.id}
 							title={post.title}
 							content={post.content}
-							author={post.author}
+							userName={post.userName}
 							date={post.date}
 						/>
 					</li>

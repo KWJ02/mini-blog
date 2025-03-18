@@ -8,7 +8,7 @@ const Post = ({ ...props }: PostProps) => {
 			<Title value={props.title} />
 			<div className={style.contentSection}>{props.content}</div>
 			<div className={style.footerSection}>
-				<div className={style.authorSection}>{props.author}</div>
+				<div className={style.authorSection}>{props.userName}</div>
 				<div className={style.dateSection}>{props.date}</div>
 			</div>
 		</div>
