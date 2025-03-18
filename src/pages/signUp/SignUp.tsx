@@ -30,52 +30,52 @@ const SignUp = () => {
 		<>
 			<div className={style.root}>
 				<div className={style.signUpContainer}>
-					<Title value="Sign Up" />
+					<Title value='Sign Up' />
 					<Input
-						type="text"
+						type='text'
 						value={id}
 						onChange={idInput}
-						marginTop="20px"
+						marginTop='20px'
 						maxLength={20}
-						label="ID"
+						label='ID'
 					/>
 					<Input
-						type="password"
+						type='password'
 						value={pw}
 						onChange={pwInput}
-						marginTop="8px"
+						marginTop='8px'
 						maxLength={20}
-						label="Password"
+						label='Password'
 					/>
 					<Input
-						type="password"
+						type='password'
 						value={confirmPw}
 						onChange={confirmPwInput}
-						marginTop="8px"
+						marginTop='8px'
 						maxLength={20}
-						label="Confirm Password"
+						label='Confirm Password'
 					/>
 					<Input
-						type="text"
+						type='text'
 						value={userName}
 						onChange={userNameInput}
-						marginTop="8px"
+						marginTop='8px'
 						maxLength={30}
-						label="UserName"
+						label='UserName'
 					/>
 
 					<Button
-						value="Sign Up"
-						width="100%"
-						height="40px"
-						display="flex"
-						alignItems="center"
-						justifyContent="center"
-						backgroundColor="ivory"
-						borderRadius="12px"
-						boxShadow="0 2px 4px rgba(0,0,0,0.1)"
-						cursor="pointer"
-						marginTop="12px"
+						value='Sign Up'
+						width='100%'
+						height='40px'
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
+						backgroundColor='ivory'
+						borderRadius='12px'
+						boxShadow='0 2px 4px rgba(0,0,0,0.1)'
+						cursor='pointer'
+						marginTop='24px'
 					/>
 				</div>
 			</div>

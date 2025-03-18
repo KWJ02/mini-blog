@@ -14,7 +14,9 @@ const Layout = ({ children, ...props }: LayoutProps) => {
 				alignItems: props.alignItems,
 				justifyContent: props.justifyContent,
 				gap: props.gap,
-				width: props.width,
+				maxWidth: props.maxWidth,
+				margin: props.margin,
+				padding: props.padding,
 			}}
 		>
 			{children}

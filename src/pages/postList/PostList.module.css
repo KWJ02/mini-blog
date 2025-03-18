@@ -3,12 +3,8 @@ ul {
 	padding: 0;
 }
 
-.root {
-	width: 100%;
-}
-
 .postList {
+	width: 100%;
 	margin: 20px 0;
-	padding: 20px;
 	list-style-type: none;
 }

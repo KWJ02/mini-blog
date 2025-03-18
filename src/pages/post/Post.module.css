@@ -1,0 +1,22 @@
+.root {
+	border: solid 1px black;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.contentSection {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #b8b7c1;
+}
+
+.footerSection {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

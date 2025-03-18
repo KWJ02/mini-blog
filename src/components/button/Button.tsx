@@ -3,10 +3,11 @@ import style from './Button.module.css';
 
 interface ButtonProps extends CommonProps {
 	value: string;
+	imgSrc?: string;
 	onClick?: () => void;
 }
 
-const Button = ({ value, onClick, ...props }: ButtonProps) => {
+const Button = ({ value, onClick, imgSrc = '', ...props }: ButtonProps) => {
 	return (
 		<div
 			className={style.button}
@@ -14,6 +15,7 @@ const Button = ({ value, onClick, ...props }: ButtonProps) => {
 				width: props.width,
 				height: props.height,
 				marginTop: props.marginTop,
+				marginBottom: props.marginBottom,
 				borderRadius: props.borderRadius,
 				display: props.display,
 				alignItems: props.alignItems,
@@ -21,9 +23,17 @@ const Button = ({ value, onClick, ...props }: ButtonProps) => {
 				backgroundColor: props.backgroundColor,
 				boxShadow: props.boxShadow,
 				cursor: props.cursor,
+				padding: props.padding,
 			}}
 			onClick={onClick}
 		>
+			{imgSrc && (
+				<img
+					src={imgSrc}
+					width='28px'
+					alt='작성하기'
+				></img>
+			)}
 			{value}
 		</div>
 	);

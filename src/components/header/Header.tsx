@@ -1,6 +1,6 @@
 import style from './Header.module.css';
-import backButton from 'assets/icon_backButton.svg';
-import user from 'assets/icon_user.svg';
+import backButton from 'assets/images/icon_backButton.svg';
+import user from 'assets/images/icon_user.svg';
 import Title from 'components/title/Title';
 import { Link } from 'react-router-dom'; // 항상 정의했던 고정된 위치로 이동
 import { useNavigate } from 'react-router-dom'; // 히스토리 기반으로 이동 (뒤로가기)
@@ -24,20 +24,20 @@ const Header = ({ ...props }: HeaderProps) => {
 						onClick={() => navigate(-1)}
 						className={style.backBtn}
 						src={backButton}
-						alt="back"
-						width="24px"
+						alt='back'
+						width='24px'
 					/>
 				</div>
 			)}
 			<Title value={props.value} />
 			{iconFlag && (
 				<div className={style.iconContainer}>
-					<Link to="/signIn">
+					<Link to='/signIn'>
 						<img
 							className={style.icon}
 							src={user}
-							alt="user"
-							width="24px"
+							alt='user'
+							width='24px'
 						/>
 					</Link>
 				</div>

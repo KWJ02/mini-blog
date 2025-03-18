@@ -9,7 +9,8 @@ const dummy = [
 	{
 		id: 2,
 		title: '두 번째 블로그 포스팅',
-		content: '두 번째 포스팅에서는 새로운 주제를 다루고 있습니다. 더 많은 설명과 예시들이 포함되어 있습니다.',
+		content:
+			'두 번째 포스팅에서는 새로운 주제를 다루고 있습니다asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd. 더 많은 설명과 예시들이 포함되어 있습니다.',
 		date: '2025-03-14',
 		author: '김철수',
 	},

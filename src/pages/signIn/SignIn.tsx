@@ -20,27 +20,27 @@ const SignIn = () => {
 	return (
 		<div className={style.root}>
 			<div className={style.signInContainer}>
-				<Title value="Mini Blog" />
+				<Title value='Mini' />
 				<Input
-					type="text"
+					type='text'
 					value={id}
 					onChange={idInput}
-					marginTop="80px"
+					marginTop='80px'
 					maxLength={20}
-					label="User Account"
+					label='User Account'
 				/>
 				<Input
-					type="password"
+					type='password'
 					value={pw}
 					onChange={pwInput}
-					marginTop="8px"
+					marginTop='8px'
 					maxLength={20}
-					label="Password"
+					label='Password'
 				/>
 				<div className={style.signUpSection}>
 					<div className={style.signUpBtnBackground}>
 						<Link
-							to="/signUp"
+							to='/signUp'
 							style={{ textDecoration: 'none', color: 'inherit' }}
 						>
 							<span className={style.signUpBtn}>Create an Account</span>
@@ -49,17 +49,17 @@ const SignIn = () => {
 				</div>
 
 				<Button
-					value="Sign In"
-					width="100%"
-					height="40px"
-					display="flex"
-					alignItems="center"
-					justifyContent="center"
-					backgroundColor="ivory"
-					borderRadius="12px"
-					boxShadow="0 2px 4px rgba(0,0,0,0.1)"
-					cursor="pointer"
-					marginTop="auto"
+					value='Sign In'
+					width='100%'
+					height='40px'
+					display='flex'
+					alignItems='center'
+					justifyContent='center'
+					backgroundColor='ivory'
+					borderRadius='12px'
+					boxShadow='0 2px 4px rgba(0,0,0,0.1)'
+					cursor='pointer'
+					marginTop='auto'
 				/>
 			</div>
 		</div>

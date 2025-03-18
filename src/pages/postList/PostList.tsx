@@ -9,7 +9,7 @@ export interface PostProps {
 	title: string;
 	content: string;
 	author: string;
-	created_date: string;
+	date: string;
 }
 
 const PostList = () => {
@@ -28,26 +28,24 @@ const PostList = () => {
 
 	return (
 		<Layout
-			display="flex"
-			alignItems="center"
-			justifyContent="center"
-			flexDirection="column"
-			gap="8px"
-			maxWidth="800px"
+			display='flex'
+			alignItems='center'
+			justifyContent='center'
+			flexDirection='column'
 		>
-			{posts.map((post) => (
-				<ul className={style.postList}>
+			<ul className={style.postList}>
+				{posts.map((post) => (
 					<li key={post.id}>
 						<Post
 							id={post.id}
 							title={post.title}
 							content={post.content}
 							author={post.author}
-							created_date={post.created_date}
+							date={post.date}
 						/>
 					</li>
-				</ul>
-			))}
+				))}
+			</ul>
 		</Layout>
 	);
 };
