@@ -4,16 +4,18 @@ import style from './Button.module.css';
 interface ButtonProps extends CommonProps {
 	value: string;
 	imgSrc?: string;
+	disabled?: boolean;
 	onClick?: () => void;
 }
 
-const Button = ({ value, onClick, imgSrc = '', ...props }: ButtonProps) => {
+const Button = ({ value, onClick, imgSrc = '', disabled = false, border = 'none', ...props }: ButtonProps) => {
 	return (
-		<div
+		<button
 			className={style.button}
 			style={{
 				width: props.width,
 				height: props.height,
+				border: border,
 				marginTop: props.marginTop,
 				marginBottom: props.marginBottom,
 				borderRadius: props.borderRadius,
@@ -25,6 +27,7 @@ const Button = ({ value, onClick, imgSrc = '', ...props }: ButtonProps) => {
 				cursor: props.cursor,
 				padding: props.padding,
 			}}
+			disabled={disabled}
 			onClick={onClick}
 		>
 			{imgSrc && (
@@ -35,7 +38,7 @@ const Button = ({ value, onClick, imgSrc = '', ...props }: ButtonProps) => {
 				></img>
 			)}
 			{value}
-		</div>
+		</button>
 	);
 };
 

@@ -1,8 +1,13 @@
 .button {
-	box-sizing: border-box;
 	transition: all 0.2s ease;
 }
 
 .button:hover {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.button:disabled,
+.button:disabled:hover {
+	box-shadow: none !important;
+	cursor: not-allowed !important; /* 마우스 커서 변경 (선택사항) */
 }
