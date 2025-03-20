@@ -2,59 +2,97 @@ import style from './SignUp.module.css';
 import Title from 'components/title/Title';
 import Input from 'components/input/Input';
 import Button from 'components/button/Button';
-import { useState, ChangeEvent, useMemo } from 'react';
+import { useState, ChangeEvent } from 'react';
 import axiosInstance from 'utils/axiosInstace';
 
+interface FormData {
+	userId: string;
+	userPw: string;
+	confirmPw: string;
+	userName: string;
+}
+
+interface FormError {
+	idError: boolean;
+	pwError: boolean;
+	nameError: boolean;
+}
+
 const SignUp = () => {
-	const [userId, setUserId] = useState<string>('');
-	const [userPw, setUserPw] = useState<string>('');
-	const [confirmPw, setConfirmPw] = useState<string>('');
-	const [userName, setUserName] = useState<string>('');
+	const [formData, setFormData] = useState<FormData>({
+		userId: '',
+		userPw: '',
+		confirmPw: '',
+		userName: '',
+	});
 
-	const checkInputValid = (userId: string, userPw: string, confirmPw: string, userName: string): boolean => {
+	const [error, setError] = useState<FormError>({
+		idError: false,
+		pwError: false,
+		nameError: false,
+	});
+
+	/**
+	 * 입력값을 검증하는 함수
+	 * @param args FormData 타입의 입력값 객체
+	 * @returns void
+	 */
+	const checkInputValid = (args: FormData): boolean => {
 		const idRegex = /^[A-Za-z0-9]+$/;
-		const pwRegex = /^[A-Za-z0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/-]+$/;
+		const pwRegex = /^[A-Za-z0-9!@#$%^&*()_+={}[\]:;"'<>,.?/-]+$/;
 		const nameRegex = /^[A-Za-z0-9가-힣]+$/;
-		// 아이디 형식에 안맞거나, 길이가 5 이하인 경우 무효
-		if (!idRegex.test(userId) || userId.length < 6) return false;
-		// 영숫자 및 특수문자 이외, 7글자 이하거나 confirmPw와 다르면 무효
-		if (!pwRegex.test(userPw) || userPw.length < 8 || userPw !== confirmPw) return false;
-		// 영숫자 및 한글 이외의 글자로 이루어져 있거나, 1글자 이하일 경우 무효
-		if (!nameRegex.test(userName) || userName.length < 2) return false;
 
-		return true;
+		let valid = true;
+		// 아이디 형식에 안맞거나, 길이가 5 이하인 경우 무효
+		if (!idRegex.test(args.userId) || args.userId.length < 6) {
+			//                  { idError: true, ...prev }로 하면
+			//                  객체의 덮어쓰는 방식에 따라 idError가 기존 prev값으로 덮어씌워져 버려 값이 변경되지 않음
+			setError((prev) => ({ ...prev, idError: true }));
+			valid = false;
+		}
+		// 영숫자 및 특수문자 이외, 7글자 이하면 무효
+		if (!pwRegex.test(args.userPw) || args.userPw.length < 8) {
+			setError((prev) => ({ ...prev, pwError: true }));
+			valid = false;
+		}
+		// 영숫자 및 한글 이외의 글자로 이루어져 있거나, 1글자 이하일 경우 무효
+		if (!nameRegex.test(args.userName) || args.userName.length < 2) {
+			setError((prev) => ({ ...prev, nameError: true }));
+			valid = false;
+		}
+
+		return valid;
 	};
 
-	const isDisabled = useMemo(() => {
-		// valid 값이 유효하면 disabled는 false가 되어야 하므로 부정값 리턴
-		return !checkInputValid(userId, userPw, confirmPw, userName);
-	}, [userId, userPw, confirmPw, userName]);
-
 	const userIdInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setUserId(e.target.value);
+		setFormData((prev) => ({ ...prev, userId: e.target.value }));
 	};
 
 	const userPwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setUserPw(e.target.value);
+		setFormData((prev) => ({ ...prev, userPw: e.target.value }));
 	};
 
 	const confirmPwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setConfirmPw(e.target.value);
+		setFormData((prev) => ({ ...prev, confirmPw: e.target.value }));
 	};
 
 	const userNameInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setUserName(e.target.value);
+		setFormData((prev) => ({ ...prev, userName: e.target.value }));
 	};
 
 	const signUp = () => {
-		axiosInstance
-			.post('/auth/signUp', {
-				userId: userId,
-				userPw: userPw,
-				userName: userName,
-			})
-			.then((response) => console.log(response.data))
-			.catch((e) => console.error(e));
+		const isValid = checkInputValid(formData);
+
+		if (isValid) {
+			axiosInstance
+				.post('/auth/signUp', {
+					userId: formData.userId,
+					userPw: formData.userPw,
+					userName: formData.userName,
+				})
+				.then((response) => console.log(response.data))
+				.catch((e) => console.error(e));
+		}
 	};
 
 	return (
@@ -64,39 +102,50 @@ const SignUp = () => {
 					<Title value='Sign Up' />
 					<Input
 						type='text'
-						value={userId}
+						value={formData.userId}
 						onChange={userIdInput}
 						marginTop='20px'
 						maxLength={20}
 						label='ID'
 						placeholder='아이디를 입력해주세요.'
+						error={error.idError}
+						errorMessage='영어, 숫자로 이루어진 6자 이상을 입력해주세요.'
+						onFocus={() => setError((prev) => ({ ...prev, idError: false }))}
 					/>
 					<Input
 						type='password'
-						value={userPw}
+						value={formData.userPw}
 						onChange={userPwInput}
 						marginTop='8px'
 						maxLength={20}
 						label='Password'
 						placeholder='비밀번호를 입력해주세요.'
+						error={error.pwError}
+						errorMessage='영어와 숫자, 특수문자로 이루어진 8글자 이상을 입력해주세요.'
+						onFocus={() => setError((prev) => ({ ...prev, pwError: false }))}
 					/>
 					<Input
 						type='password'
-						value={confirmPw}
+						value={formData.confirmPw}
 						onChange={confirmPwInput}
 						marginTop='8px'
 						maxLength={20}
 						label='Confirm Password'
 						placeholder='비밀번호 확인'
+						error={formData.userPw !== formData.confirmPw}
+						errorMessage='입력한 비밀번호와 일치하지 않습니다.'
 					/>
 					<Input
 						type='text'
-						value={userName}
+						value={formData.userName}
 						onChange={userNameInput}
 						marginTop='8px'
 						maxLength={30}
 						label='UserName'
 						placeholder='활동명을 입력해주세요.'
+						error={error.nameError}
+						errorMessage='두 글자 이상 입력해주세요.'
+						onFocus={() => setError((prev) => ({ ...prev, nameError: false }))}
 					/>
 
 					<Button
@@ -111,7 +160,6 @@ const SignUp = () => {
 						boxShadow='0 2px 4px rgba(0,0,0,0.1)'
 						cursor='pointer'
 						marginTop='24px'
-						disabled={isDisabled}
 						onClick={signUp}
 					/>
 				</div>
