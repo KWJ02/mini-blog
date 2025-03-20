@@ -14,7 +14,13 @@
 	outline: none;
 }
 
+.inputSection {
+	border-radius: 12px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
+}
+
 .inputError {
+	border: none;
 	border-radius: 12px;
 	box-shadow: 0 0 0 1px rgba(255, 0, 0, 1);
 }

@@ -28,6 +28,7 @@ const SignIn = () => {
 					marginTop='80px'
 					maxLength={20}
 					label='User Account'
+					placeholder='아이디를 입력해주세요.'
 				/>
 				<Input
 					type='password'
@@ -36,6 +37,7 @@ const SignIn = () => {
 					marginTop='8px'
 					maxLength={20}
 					label='Password'
+					placeholder='비밀번호를 입력해주세요.'
 				/>
 				<div className={style.signUpSection}>
 					<div className={style.signUpBtnBackground}>
