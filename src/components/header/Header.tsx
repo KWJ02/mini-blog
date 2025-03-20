@@ -32,7 +32,10 @@ const Header = ({ ...props }: HeaderProps) => {
 			<Title value={props.value} />
 			{iconFlag && (
 				<div className={style.iconContainer}>
-					<Link to='/signIn'>
+					<Link
+						to='/signIn'
+						className={style.iconLink}
+					>
 						<img
 							className={style.icon}
 							src={user}

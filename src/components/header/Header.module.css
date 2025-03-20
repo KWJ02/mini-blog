@@ -30,6 +30,9 @@
 	top: 50%;
 	transform: translateY(-50%);
 	right: 0;
+}
+
+.iconLink {
 	display: flex;
 	align-items: center;
 	justify-content: center;
