@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import PostModel from '../models/postModel';
+import PostModel from '../models/Post';
 
 // 게시물 목록을 가져오는 함수
 export const getPosts = async (req: Request, res: Response) => {
