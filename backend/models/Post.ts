@@ -11,8 +11,14 @@ interface Post {
 
 const PostModel = {
 	getAllPosts: async (): Promise<Post[]> => {
+		// posts 테이블 내 user_name 칼럼삭제
 		const [rows] = await pool.query(
-			'SELECT id, title, content, user_name as userName, DATE_FORMAT(COALESCE(update_date, create_date), "%Y-%m-%d") AS date FROM posts'
+			`
+			select id, title, content, p.user_id as userId, u.user_name as userName, DATE_FORMAT(GREATEST(create_date, update_date), '%Y-%m-%d') as date
+			from posts p
+			join users u
+			on p.user_id = u.user_id;
+			`
 		);
 		return rows as Post[];
 	},

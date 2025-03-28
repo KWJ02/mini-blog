@@ -17,14 +17,13 @@ interface InputProps extends CommonProps {
 	onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ width = '100%', height = 'auto', onChange, onFocus, ...props }: InputProps) => {
+const Input = ({ width = '100%', height = '40px', onChange, onFocus, ...props }: InputProps) => {
 	let inputError = props.error;
 	return (
 		<div
 			className={style.inputContainer}
 			style={{
 				width: width,
-				height: height,
 				marginTop: `${props.marginTop}`,
 				marginBottom: `${props.marginBottom}`,
 			}}
@@ -34,9 +33,17 @@ const Input = ({ width = '100%', height = 'auto', onChange, onFocus, ...props }:
 			 * 지금 css는 모듈로 불러오기 때문에 문자열로 바로 class부여하면 적용안됨.
 			 * style객체로 접근해야 함;;
 			 */}
-			<div className={`${style.inputSection} ${inputError ? style.inputError : ''}`}>
+			<div
+				className={`${style.inputSection} ${inputError ? style.inputError : ''}`}
+				style={{
+					height: height,
+				}}
+			>
 				<input
 					className={style.input}
+					style={{
+						height: height,
+					}}
 					type={props.type}
 					value={props.value}
 					name={props.name}

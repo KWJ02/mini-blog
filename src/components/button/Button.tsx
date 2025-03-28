@@ -8,13 +8,22 @@ interface ButtonProps extends CommonProps {
 	onClick?: () => void;
 }
 
-const Button = ({ value, onClick, imgSrc = '', disabled = false, border = 'none', ...props }: ButtonProps) => {
+const Button = ({
+	width = '100%',
+	height = 'auto',
+	value,
+	onClick,
+	imgSrc = '',
+	disabled = false,
+	border = 'none',
+	...props
+}: ButtonProps) => {
 	return (
 		<button
 			className={style.button}
 			style={{
-				width: props.width,
-				height: props.height,
+				width: width,
+				height: height,
 				border: border,
 				marginTop: props.marginTop,
 				marginBottom: props.marginBottom,

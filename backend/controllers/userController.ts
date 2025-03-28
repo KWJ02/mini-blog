@@ -12,12 +12,11 @@ class UserController {
 			const result = await User.insertUser(dto);
 
 			if (!result.success) {
-				res.status(409).json({ messsage: '이미 등록된 사용자 ID 입니다.' });
+				res.status(409).json({ message: '이미 등록된 사용자 ID 입니다.' });
 			}
 
 			res.status(201).json(result);
 		} catch (error) {
-			console.error(error);
 			res.status(500).json({ message: 'Server Error' });
 		}
 	}

@@ -10,6 +10,11 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
+
+if (!process.env.PORT) {
+	throw new Error('SESSION_PRIVATE_KEY 환경 변수가 설정되지 않았습니다.');
+}
+
 const PORT = process.env.PORT;
 
 if (!process.env.SESSION_PRIVATE_KEY) {
