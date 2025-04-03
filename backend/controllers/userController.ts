@@ -16,6 +16,8 @@ class UserController {
 			}
 		}
 	}
+
+	static async login(req: Request, res: Response): Promise<void> {}
 }
 
 export default UserController;

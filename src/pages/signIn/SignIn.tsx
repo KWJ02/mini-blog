@@ -10,11 +10,16 @@ const SignIn = () => {
 	const [pw, setPw] = useState<string>('');
 
 	const idInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setId(e.target.value);
+		// set 내부 trim 적용 -> 공백 사용 불가
+		setId(e.target.value.trim());
 	};
 
 	const pwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setPw(e.target.value);
+		setPw(e.target.value.trim());
+	};
+
+	const login = () => {
+		console.log(id, pw);
 	};
 
 	return (
@@ -62,6 +67,7 @@ const SignIn = () => {
 					boxShadow='0 2px 4px rgba(0,0,0,0.1)'
 					cursor='pointer'
 					marginTop='auto'
+					onClick={login}
 				/>
 			</div>
 		</div>

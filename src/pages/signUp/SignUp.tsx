@@ -65,7 +65,7 @@ const SignUp = () => {
 
 		let valid = true;
 		// 아이디 형식에 안맞거나, 길이가 5 이하인 경우 무효
-		if (!idRegex.test(args.userId.trim()) || args.userId.trim().length < 6) {
+		if (!idRegex.test(args.userId) || args.userId.length < 6) {
 			//                  { idError: true, ...prev }로 하면
 			//                  객체의 덮어쓰는 방식에 따라 idError가 기존 prev값으로 덮어씌워져 버려 값이 변경되지 않음
 			setError((prev) => ({ ...prev, idError: true }));
@@ -73,7 +73,7 @@ const SignUp = () => {
 			valid = false;
 		}
 		// 영숫자 및 특수문자 이외, 7글자 이하면 무효
-		if (!pwRegex.test(args.userPw.trim()) || args.userPw.trim().length < 8) {
+		if (!pwRegex.test(args.userPw) || args.userPw.length < 8) {
 			setError((prev) => ({ ...prev, pwError: true }));
 			setErrorMessage((prev) => ({
 				...prev,
@@ -82,7 +82,7 @@ const SignUp = () => {
 			valid = false;
 		}
 		// 영숫자 및 한글 이외의 글자로 이루어져 있거나, 1글자 이하일 경우 무효
-		if (!nameRegex.test(args.userName.trim()) || args.userName.trim().length < 2) {
+		if (!nameRegex.test(args.userName) || args.userName.length < 2) {
 			setError((prev) => ({ ...prev, nameError: true }));
 
 			setErrorMessage((prev) => ({
@@ -96,19 +96,19 @@ const SignUp = () => {
 	};
 
 	const userIdInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setFormData((prev) => ({ ...prev, userId: e.target.value }));
+		setFormData((prev) => ({ ...prev, userId: e.target.value.trim() }));
 	};
 
 	const userPwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setFormData((prev) => ({ ...prev, userPw: e.target.value }));
+		setFormData((prev) => ({ ...prev, userPw: e.target.value.trim() }));
 	};
 
 	const confirmPwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setFormData((prev) => ({ ...prev, confirmPw: e.target.value }));
+		setFormData((prev) => ({ ...prev, confirmPw: e.target.value.trim() }));
 	};
 
 	const userNameInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setFormData((prev) => ({ ...prev, userName: e.target.value }));
+		setFormData((prev) => ({ ...prev, userName: e.target.value.trim() }));
 	};
 
 	const signUp = () => {
