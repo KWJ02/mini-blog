@@ -5,13 +5,12 @@ import Button from 'components/button/Button';
 
 interface ModalProps {
 	display: boolean;
-	value: string;
-	type?: string;
 	onConfirm?: () => void;
 	onClick?: () => void;
+	children?: React.ReactNode;
 }
 
-const Modal = ({ onConfirm, onClick, ...props }: ModalProps) => {
+const Modal = ({ onConfirm, onClick, children, ...props }: ModalProps) => {
 	return (
 		<Layout
 			display={props.display ? 'block' : 'none'}
@@ -30,7 +29,7 @@ const Modal = ({ onConfirm, onClick, ...props }: ModalProps) => {
 				justifyContent='center'
 			>
 				<div className={style.modalContainer}>
-					<div className={style.modalContent}>{props.value}</div>
+					{children}
 					{/** 모달 사용처 늘어나면 Card 컴포넌트 => .modalContent 영역은 children으로 대체 */}
 					<div className={style.modalBtnSection}>
 						<Button
@@ -50,4 +49,4 @@ const Modal = ({ onConfirm, onClick, ...props }: ModalProps) => {
 	);
 };
 
-export default Modal;
+export { Modal };

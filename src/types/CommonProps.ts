@@ -39,4 +39,5 @@ export interface CommonProps {
 	zIndex?: CSSProperties['zIndex'];
 	border?: CSSProperties['border'];
 	textIndent?: CSSProperties['textIndent'];
+	flex?: CSSProperties['flex'];
 }

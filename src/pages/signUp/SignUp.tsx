@@ -5,6 +5,9 @@ import Button from 'components/button/Button';
 import { useState, ChangeEvent } from 'react';
 import axiosInstance from 'utils/axiosInstace';
 import errorHandler from 'utils/errorHandler';
+import { Modal } from 'components/modal/Modal';
+import Card from 'components/card/Card';
+import Layout from 'components/layout/Layout';
 
 interface FormData {
 	userId: string;
@@ -44,6 +47,9 @@ const SignUp = () => {
 		pwErrorMessage: '',
 		nameErrorMessage: '',
 	});
+
+	const [isActiveModal, setIsActiveModal] = useState<boolean>(false);
+	const [sucessMessage, setSucessMessage] = useState<string>('');
 
 	/**
 	 * 입력값을 검증하는 함수
@@ -113,7 +119,10 @@ const SignUp = () => {
 					userPw: formData.userPw,
 					userName: formData.userName,
 				})
-				.then((response) => console.log(response.data))
+				.then((response) => {
+					setSucessMessage(response.data.message);
+					setIsActiveModal(true);
+				})
 				.catch((e) => {
 					const result = errorHandler(e) || '';
 					setError((prev) => ({ ...prev, idError: true }));
@@ -124,6 +133,22 @@ const SignUp = () => {
 
 	return (
 		<div className={style.root}>
+			<Modal
+				display={isActiveModal}
+				onClick={() => {
+					setIsActiveModal(false);
+				}}
+			>
+				<Layout
+					flex={1}
+					display='flex'
+					alignItems='center'
+					justifyContent='center'
+				>
+					<Card value={sucessMessage} />
+				</Layout>
+			</Modal>
+
 			<div className={style.signUpContainer}>
 				<Title value='Sign Up' />
 				<Input

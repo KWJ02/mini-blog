@@ -16,8 +16,8 @@ class UserService {
 			throw new ConflictError(409, '이미 등록된 사용자 ID 입니다.');
 		}
 		// 2. 사용자 등록
-		const result = await UserRepository.insertUser(dto);
-		return { success: true, message: '사용자가 성공적으로 등록되었습니다.', data: result };
+		await UserRepository.insertUser(dto);
+		return { message: '회원가입이 완료되었습니다.' };
 	}
 }
 
