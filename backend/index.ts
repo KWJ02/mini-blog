@@ -5,25 +5,25 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
+import checkEnv from './utils/checkEnv';
 import cors from 'cors';
+import { RedisStore } from 'connect-redis';
+import redisClient from './config/redis';
 
 dotenv.config();
+checkEnv();
 
 const app = express();
 
-if (!process.env.PORT) {
-	throw new Error('SESSION_PRIVATE_KEY 환경 변수가 설정되지 않았습니다.');
-}
-
-const PORT = process.env.PORT;
-
-if (!process.env.SESSION_PRIVATE_KEY) {
-	throw new Error('SESSION_PRIVATE_KEY 환경 변수가 설정되지 않았습니다.');
-}
+const redisStore = new RedisStore({
+	client: redisClient,
+});
 
 app.use(
 	session({
-		secret: process.env.SESSION_PRIVATE_KEY,
+		store: redisStore,
+		// 환경변수 ! => Non-null Assertion (checkEnv 함수 실행 -> 반드시 null이 아님을 명시)
+		secret: process.env.SESSION_PRIVATE_KEY!,
 		resave: false,
 		saveUninitialized: false,
 		cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 1000 * 60 * 60 * 24 },
@@ -35,6 +35,8 @@ app.use(express.json());
 // 특정 주소로 요청이 들어오면 특정 라우트에서 처리. 스프링 RequestMapping 애노테이션처럼 특정 주소 명시
 app.use('/post', postRoutes);
 app.use('/auth', userRoutes);
+
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
 	console.log(PORT + '실행중');

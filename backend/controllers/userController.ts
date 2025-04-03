@@ -1,23 +1,19 @@
 import { Request, Response } from 'express';
-import User from '../models/User';
+import UserService from '../services/UserService';
+import { ConflictError } from '../utils/CustomError';
 
 class UserController {
 	static async registUser(req: Request, res: Response): Promise<void> {
-		const dto = {
-			userId: req.body.userId,
-			userPw: req.body.userPw,
-			userName: req.body.userName,
-		};
 		try {
-			const result = await User.insertUser(dto);
-
-			if (!result.success) {
-				res.status(409).json({ message: '이미 등록된 사용자 ID 입니다.' });
-			}
+			const result = await UserService.registerUser(req.body);
 
 			res.status(201).json(result);
 		} catch (error) {
-			res.status(500).json({ message: 'Server Error' });
+			if (error instanceof ConflictError) {
+				res.status(error.status).json({ message: error.message });
+			} else {
+				res.status(500).json({ message: 'Server Error' });
+			}
 		}
 	}
 }

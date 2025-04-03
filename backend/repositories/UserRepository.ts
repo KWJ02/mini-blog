@@ -7,16 +7,11 @@ interface UserType {
 	userName: string;
 }
 
-class User {
+class UserRepository {
 	static async insertUser(dto: UserType) {
 		let conn: PoolConnection | null = null;
 		try {
 			conn = await pool.getConnection();
-
-			const isDuplicate = await this.checkDuplicateUser(conn, dto.userId);
-			if (isDuplicate) {
-				return { success: false, message: '이미 존재하는 사용자 ID입니다.' };
-			}
 
 			// SQL 상에선 스네이크 케이스 <-> 파스칼 케이스, 카멜 케이스와 혼동x
 			const [rows] = await conn.execute('INSERT INTO users (user_id, user_pw, user_name) VALUES (?,?,?)', [
@@ -28,12 +23,16 @@ class User {
 		} catch (error) {
 			throw new Error(error + '');
 		} finally {
-			if (conn) conn.release();
+			conn?.release();
 		}
 	}
 
-	static async checkDuplicateUser(conn: PoolConnection, userId: string) {
+	static async findByUserId(userId: string) {
+		let conn: PoolConnection | null = null;
+
 		try {
+			conn = await pool.getConnection();
+
 			const [rows]: [RowDataPacket[], FieldPacket[]] = await conn.execute(
 				`SELECT user_id 
                 FROM users
@@ -41,12 +40,13 @@ class User {
 				[userId]
 			);
 
-			return rows.length > 0;
+			return rows;
 		} catch (error) {
-			console.error(error);
-			throw new Error(error + '');
+			throw new Error(error as string);
+		} finally {
+			conn?.release();
 		}
 	}
 }
 
-export default User;
+export default UserRepository;
