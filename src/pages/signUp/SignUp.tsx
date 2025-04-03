@@ -3,6 +3,7 @@ import Title from 'components/title/Title';
 import Input from 'components/input/Input';
 import Button from 'components/button/Button';
 import { useState, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from 'utils/axiosInstace';
 import errorHandler from 'utils/errorHandler';
 import { Modal } from 'components/modal/Modal';
@@ -29,6 +30,7 @@ interface FormErrorMessage {
 }
 
 const SignUp = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState<FormData>({
 		userId: '',
 		userPw: '',
@@ -137,6 +139,7 @@ const SignUp = () => {
 				display={isActiveModal}
 				onClick={() => {
 					setIsActiveModal(false);
+					navigate('/signIn', { replace: true });
 				}}
 			>
 				<Layout
