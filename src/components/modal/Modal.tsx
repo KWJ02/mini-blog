@@ -30,7 +30,6 @@ const Modal = ({ onConfirm, onClick, children, ...props }: ModalProps) => {
 			>
 				<div className={style.modalContainer}>
 					{children}
-					{/** 모달 사용처 늘어나면 Card 컴포넌트 => .modalContent 영역은 children으로 대체 */}
 					<div className={style.modalBtnSection}>
 						<Button
 							value='확인'
