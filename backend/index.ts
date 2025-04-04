@@ -26,11 +26,21 @@ app.use(
 		secret: process.env.SESSION_PRIVATE_KEY!,
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 1000 * 60 * 60 * 24 },
+		cookie: {
+			httpOnly: true,
+			secure: false, // HTTPS 안 쓰면 false로 해야 함 (개발환경)
+			sameSite: 'lax', // 'strict'이면 안 올 수도 있음,
+			maxAge: 1000 * 60 * 60 * 24,
+		},
 	})
 );
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'http://localhost:3000', // or your frontend URL
+		credentials: true, // ← 이거 중요!
+	})
+);
 app.use(express.json());
 
 // 특정 주소로 요청이 들어오면 특정 라우트에서 처리. 스프링 RequestMapping 애노테이션처럼 특정 주소 명시

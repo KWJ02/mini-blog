@@ -19,8 +19,8 @@ class UserController {
 
 	static async login(req: Request, res: Response): Promise<void> {
 		try {
-			const result = await UserService.login(req, req.body);
-			res.status(200).json({ user: result });
+			await UserService.login(req, req.body);
+			res.status(200).json({ message: '로그인 성공' });
 		} catch (error) {
 			if (error instanceof ConflictError) {
 				res.status(error.status).json({ message: error.message });

@@ -1,3 +1,4 @@
+import { RowDataPacket } from 'mysql2';
 import UserRepository from '../repositories/UserRepository';
 import { ConflictError } from '../utils/CustomError';
 import { Request } from 'express';
@@ -26,7 +27,7 @@ class UserService {
 	static async registerUser(dto: UserDTO) {
 		// 1. 사용자 중복 체크
 		const existingUser = await UserRepository.findByUserId(dto.userId);
-		if (existingUser.length > 0) {
+		if (existingUser) {
 			throw new ConflictError(409, '이미 등록된 사용자 ID 입니다.');
 		}
 		// 2. 사용자 등록
@@ -35,12 +36,11 @@ class UserService {
 	}
 
 	static async login(req: Request, dao: UserDAO) {
-		const user = await UserRepository.findByUserId(dao.userId);
+		const user = (await UserRepository.findRegistUser(dao.userId, dao.userPw)) as RowDataPacket[];
 		if (user.length === 0) {
 			throw new ConflictError(401, '아이디 또는 비밀번호가 일치하지 않습니다.');
 		}
-
-		console.log(req.session);
+		(req as any).session.user = { userId: user[0].user_id };
 	}
 }
 

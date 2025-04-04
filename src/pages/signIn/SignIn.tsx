@@ -25,7 +25,9 @@ const SignIn = () => {
 				userId: userId,
 				userPw: userPw,
 			})
-			.then((response) => {})
+			.then((response) => {
+				console.log(response.data);
+			})
 			.catch((e) => console.error(e));
 	};
 

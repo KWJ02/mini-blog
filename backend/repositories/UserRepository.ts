@@ -1,5 +1,5 @@
 import pool from '../config/db';
-import { FieldPacket, PoolConnection, RowDataPacket } from 'mysql2/promise';
+import { PoolConnection } from 'mysql2/promise';
 
 interface UserType {
 	userId: string;
@@ -33,11 +33,32 @@ class UserRepository {
 		try {
 			conn = await pool.getConnection();
 
-			const [rows]: [RowDataPacket[], FieldPacket[]] = await conn.execute(
+			const [rows] = await conn.execute(
 				`SELECT user_id, user_name
                 FROM users
                 WHERE user_id=?`,
 				[userId]
+			);
+
+			return rows;
+		} catch (error) {
+			throw new Error(error as string);
+		} finally {
+			conn?.release();
+		}
+	}
+
+	static async findRegistUser(userId: string, userPw: string) {
+		let conn: PoolConnection | null = null;
+
+		try {
+			conn = await pool.getConnection();
+
+			const [rows] = await conn.execute(
+				`SELECT user_id, user_name
+                FROM users
+                WHERE user_id=? AND user_pw=?`,
+				[userId, userPw]
 			);
 
 			return rows;
