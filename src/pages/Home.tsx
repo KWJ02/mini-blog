@@ -4,8 +4,16 @@ import PostList from 'pages/postList/PostList';
 import Button from 'components/button/Button';
 import Layout from 'components/layout/Layout';
 import write from 'assets/images/icon_write.svg';
+import axiosInstance from 'utils/axiosInstace';
 
 const Home = () => {
+	axiosInstance
+		.get('/check-login')
+		.then((res) => {
+			console.log(res);
+		})
+		.catch((e) => console.error(e));
+
 	return (
 		<>
 			<Header

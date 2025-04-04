@@ -40,7 +40,8 @@ class UserService {
 		if (user.length === 0) {
 			throw new ConflictError(401, '아이디 또는 비밀번호가 일치하지 않습니다.');
 		}
-		(req as any).session.user = { userId: user[0].user_id };
+		console.log(user);
+		(req as any).session.user = { userId: user[0].user_id, userName: user[0].user_name };
 	}
 }
 

@@ -9,6 +9,7 @@ import checkEnv from './utils/checkEnv';
 import cors from 'cors';
 import { RedisStore } from 'connect-redis';
 import redisClient from './config/redis';
+import type {} from './types/express-session';
 
 dotenv.config();
 checkEnv();
@@ -51,4 +52,12 @@ const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
 	console.log(PORT + '실행중');
+});
+
+app.get('/check-login', (req, res) => {
+	if (req.session.user) {
+		res.send(`로그인된 사용자: ${req.session.user.userId} ${req.session.user.userName}`);
+	} else {
+		res.status(401).send('로그인 안 됨');
+	}
 });
