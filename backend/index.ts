@@ -26,9 +26,10 @@ app.use(
 		secret: process.env.SESSION_PRIVATE_KEY!,
 		resave: false,
 		saveUninitialized: false,
-		cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 1000 * 60 * 60 * 24 },
+		cookie: { maxAge: 1000 * 60 * 60 * 24 },
 	})
 );
+
 app.use(cors());
 app.use(express.json());
 

@@ -16,4 +16,13 @@ const redisClient = createClient({
 
 redisClient.connect().catch(console.error);
 
+// redis 연결 테스트 함수(o)
+// async function main() {
+// 	await redisClient.set('testKey', 'testValue');
+// 	const value = await redisClient.get('testKey');
+// 	console.log(value);
+// }
+
+// main().catch(console.error);
+
 export default redisClient;

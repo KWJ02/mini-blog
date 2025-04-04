@@ -4,22 +4,29 @@ import Input from 'components/input/Input';
 import Button from 'components/button/Button';
 import { Link } from 'react-router-dom';
 import { useState, ChangeEvent } from 'react';
+import axiosInstance from 'utils/axiosInstace';
 
 const SignIn = () => {
-	const [id, setId] = useState<string>('');
-	const [pw, setPw] = useState<string>('');
+	const [userId, setUserId] = useState<string>('');
+	const [userPw, setUserPw] = useState<string>('');
 
 	const idInput = (e: ChangeEvent<HTMLInputElement>) => {
 		// set 내부 trim 적용 -> 공백 사용 불가
-		setId(e.target.value.trim());
+		setUserId(e.target.value.trim());
 	};
 
 	const pwInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setPw(e.target.value.trim());
+		setUserPw(e.target.value.trim());
 	};
 
 	const login = () => {
-		console.log(id, pw);
+		axiosInstance
+			.post('/auth/signIn', {
+				userId: userId,
+				userPw: userPw,
+			})
+			.then((response) => {})
+			.catch((e) => console.error(e));
 	};
 
 	return (
@@ -28,7 +35,7 @@ const SignIn = () => {
 				<Title value='Mini' />
 				<Input
 					type='text'
-					value={id}
+					value={userId}
 					onChange={idInput}
 					marginTop='80px'
 					maxLength={20}
@@ -37,7 +44,7 @@ const SignIn = () => {
 				/>
 				<Input
 					type='password'
-					value={pw}
+					value={userPw}
 					onChange={pwInput}
 					marginTop='8px'
 					maxLength={20}

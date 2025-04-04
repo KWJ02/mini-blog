@@ -19,7 +19,7 @@ class UserRepository {
 				dto.userPw,
 				dto.userName,
 			]);
-			return { rows, success: true, message: '사용자가 성공적으로 등록되었습니다.' };
+			return { rows, message: '사용자가 성공적으로 등록되었습니다.' };
 		} catch (error) {
 			throw new Error(error + '');
 		} finally {
@@ -34,7 +34,7 @@ class UserRepository {
 			conn = await pool.getConnection();
 
 			const [rows]: [RowDataPacket[], FieldPacket[]] = await conn.execute(
-				`SELECT user_id 
+				`SELECT user_id, user_name
                 FROM users
                 WHERE user_id=?`,
 				[userId]
