@@ -7,6 +7,7 @@ import write from 'assets/images/icon_write.svg';
 import axiosInstance from 'utils/axiosInstace';
 
 const Home = () => {
+	// 테스트 요청
 	axiosInstance
 		.get('/check-login')
 		.then((res) => {

@@ -54,6 +54,7 @@ app.listen(PORT, () => {
 	console.log(PORT + '실행중');
 });
 
+// 테스트 라우트
 app.get('/check-login', (req, res) => {
 	if (req.session.user) {
 		res.send(`로그인된 사용자: ${req.session.user.userId} ${req.session.user.userName}`);
