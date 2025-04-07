@@ -59,6 +59,6 @@ app.get('/check-login', (req, res) => {
 	if (req.session.user) {
 		res.send(`로그인된 사용자: ${req.session.user.userId} ${req.session.user.userName}`);
 	} else {
-		res.status(401).send('로그인 안 됨');
+		res.status(401).send({ message: '로그인 안 됨' });
 	}
 });

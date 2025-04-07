@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import style from './Card.module.css';
 
 interface CardProps {
@@ -5,9 +6,18 @@ interface CardProps {
 	value: string;
 }
 
-const Card = ({ ...props }: CardProps) => {
+interface CardCSSProps {
+	flex?: CSSProperties['flex'];
+}
+
+const Card = ({ ...props }: CardProps & CardCSSProps) => {
 	return (
-		<div className={style.root}>
+		<div
+			className={style.root}
+			style={{
+				flex: props.flex,
+			}}
+		>
 			{props.title && <h1>{props.title}</h1>}
 			<div>{props.value}</div>
 		</div>

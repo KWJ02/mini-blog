@@ -2,13 +2,19 @@ import style from './SignIn.module.css';
 import Title from 'components/title/Title';
 import Input from 'components/input/Input';
 import Button from 'components/button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, ChangeEvent } from 'react';
 import axiosInstance from 'utils/axiosInstace';
+import { Modal } from 'components/modal/Modal';
+import errorHandler from 'utils/errorHandler';
+import Card from 'components/card/Card';
 
 const SignIn = () => {
 	const [userId, setUserId] = useState<string>('');
 	const [userPw, setUserPw] = useState<string>('');
+	const [isActiveModal, setIsActiveModal] = useState<boolean>(false);
+	const [signInErrorMessage, setSignInErrorMessage] = useState<string>('');
+	const navigate = useNavigate();
 
 	const idInput = (e: ChangeEvent<HTMLInputElement>) => {
 		// set 내부 trim 적용 -> 공백 사용 불가
@@ -27,12 +33,29 @@ const SignIn = () => {
 			})
 			.then((response) => {
 				console.log(response.data);
+				navigate('/', { replace: true });
 			})
-			.catch((e) => console.error(e));
+			.catch((e) => {
+				const errorMessage = errorHandler(e);
+				setSignInErrorMessage(errorMessage as string);
+				setIsActiveModal(true);
+			});
 	};
 
 	return (
 		<div className={style.root}>
+			<Modal
+				display={isActiveModal}
+				onClick={() => {
+					setIsActiveModal(false);
+				}}
+			>
+				<Card
+					value={signInErrorMessage}
+					flex={1}
+				/>
+			</Modal>
+
 			<div className={style.signInContainer}>
 				<Title value='Mini' />
 				<Input
