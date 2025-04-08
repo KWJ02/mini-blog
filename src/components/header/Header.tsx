@@ -23,10 +23,7 @@ const Header = ({ ...props }: HeaderProps) => {
 	const backBtnFlag = props.backBtn;
 	const iconFlag = props.icon;
 	const navigate = useNavigate();
-	const [user, setUser] = useState<UserInforms>({
-		userId: '',
-		userName: '',
-	});
+	const [user, setUser] = useState<UserInforms | null>(null);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -44,7 +41,17 @@ const Header = ({ ...props }: HeaderProps) => {
 		return;
 	}, []);
 
-	const logout = () => {};
+	const logout = () => {
+		axiosInstance
+			.post('/auth/logout')
+			.then(() => {
+				setIsOpen(false);
+			})
+			.catch((e) => console.log(errorHandler(e)))
+			.finally(() => {
+				window.location.reload();
+			});
+	};
 
 	return (
 		<div className={style.root}>

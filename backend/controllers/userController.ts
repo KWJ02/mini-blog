@@ -30,6 +30,20 @@ class UserController {
 		}
 	}
 
+	static async logout(req: Request, res: Response) {
+		try {
+			req.session.destroy((err) => {
+				if (err) {
+					throw new Error('Server Error');
+				}
+				res.clearCookie('connect.sid');
+				res.status(200).json({ message: '로그아웃 성공' });
+			});
+		} catch (error) {
+			res.status(500).json(error);
+		}
+	}
+
 	static async check(req: Request, res: Response) {
 		try {
 			const result = await UserService.check(req);
