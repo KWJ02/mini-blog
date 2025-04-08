@@ -6,5 +6,6 @@ const router = Router();
 
 router.post('/signUp', asyncHandler(UserController.registUser));
 router.post('/signIn', UserController.login);
+router.get('/check', UserController.check);
 
 export default router;

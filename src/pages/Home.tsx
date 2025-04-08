@@ -4,20 +4,8 @@ import PostList from 'pages/postList/PostList';
 import Button from 'components/button/Button';
 import Layout from 'components/layout/Layout';
 import write from 'assets/images/icon_write.svg';
-import axiosInstance from 'utils/axiosInstace';
-import errorHandler from 'utils/errorHandler';
 
 const Home = () => {
-	// 테스트 요청
-	axiosInstance
-		.get('/check-login')
-		.then((res) => {
-			console.log(res);
-		})
-		.catch((e) => {
-			console.log(errorHandler(e));
-		});
-
 	return (
 		<>
 			<Header

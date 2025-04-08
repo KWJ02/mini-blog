@@ -38,10 +38,18 @@ class UserService {
 	static async login(req: Request, dao: UserDAO) {
 		const user = (await UserRepository.findRegistUser(dao.userId, dao.userPw)) as RowDataPacket[];
 		if (user.length === 0) {
-			throw new ConflictError(401, '아이디 또는 비밀번호가 일치하지 않습니다.');
+			throw new ConflictError(404, '아이디 또는 비밀번호가 일치하지 않습니다.');
 		}
-		console.log(user);
 		(req as any).session.user = { userId: user[0].user_id, userName: user[0].user_name };
+	}
+
+	static async check(req: Request) {
+		const session = (req as any).session?.user;
+		if (!session) {
+			throw new ConflictError(401, '로그인을 해주세요.');
+		}
+
+		return { userId: session.userId, userName: session.userName };
 	}
 }
 

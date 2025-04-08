@@ -12,6 +12,8 @@ const errorHandler = (error: AxiosError) => {
 	switch (statusCode) {
 		case 401:
 			return responseMessage.message;
+		case 404:
+			return responseMessage.message;
 		case 409:
 			return responseMessage.message;
 	}

@@ -1,6 +1,9 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+/**
+ * 환경변수 값 유효성 판정 함수
+ */
 const checkEnv = () => {
 	if (!process.env.SESSION_PRIVATE_KEY) {
 		throw new Error('SESSION_PRIVATE_KEY 환경 변수가 설정되지 않았습니다.');
@@ -40,6 +43,10 @@ const checkEnv = () => {
 
 	if (!process.env.REDIS_PASSWORD) {
 		throw new Error('REDIS_PASSWORD 환경 변수가 설정되지 않았습니다.');
+	}
+
+	if (!process.env.CORS_ORIGIN) {
+		throw new Error('CORS_ORIGIN 환경 변수가 설정되지 않았습니다.');
 	}
 };
 
