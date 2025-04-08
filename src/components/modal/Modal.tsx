@@ -2,6 +2,7 @@ import style from './Modal.module.css';
 import Layout from 'components/layout/Layout';
 import Overlay from 'components/layout/Overlay';
 import Button from 'components/button/Button';
+import { useEffect } from 'react';
 
 interface ModalProps {
 	display: boolean;
@@ -11,10 +12,24 @@ interface ModalProps {
 }
 
 const Modal = ({ onConfirm, onClick, children, ...props }: ModalProps) => {
+	useEffect(() => {
+		if (props.display) {
+			// 화면 튀는 문제 => box-sizing으로 해결
+			const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+			document.body.style.overflow = 'hidden';
+			document.body.style.boxSizing = 'border-box';
+			document.body.style.paddingRight = `${scrollBarWidth}px`;
+		} else {
+			document.body.style.overflow = '';
+			document.body.style.boxSizing = '';
+			document.body.style.paddingRight = '';
+		}
+	}, [props.display]);
+
 	return (
 		<Layout
 			display={props.display ? 'block' : 'none'}
-			position='absolute'
+			position='fixed'
 			width='100%'
 			height='100vh'
 			zIndex={100}
