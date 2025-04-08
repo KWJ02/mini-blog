@@ -2,7 +2,6 @@ import style from './Header.module.css';
 import backButton from 'assets/images/icon_backButton.svg';
 import iconUser from 'assets/images/icon_user.svg';
 import Title from 'components/title/Title';
-import Card from 'components/card/Card';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // 항상 정의했던 고정된 위치로 이동
 import { useNavigate } from 'react-router-dom'; // 히스토리 기반으로 이동 (뒤로가기)
@@ -28,6 +27,7 @@ const Header = ({ ...props }: HeaderProps) => {
 		userId: '',
 		userName: '',
 	});
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		// 테스트 요청
@@ -43,6 +43,8 @@ const Header = ({ ...props }: HeaderProps) => {
 
 		return;
 	}, []);
+
+	const logout = () => {};
 
 	return (
 		<div className={style.root}>
@@ -61,7 +63,26 @@ const Header = ({ ...props }: HeaderProps) => {
 			{iconFlag && (
 				<div className={style.iconContainer}>
 					{user ? (
-						<div>{user.userName} 님</div>
+						<div className={style.userSection}>
+							<div
+								onClick={() => setIsOpen(!isOpen)}
+								className={style.userName}
+							>
+								{user.userName} 님
+							</div>
+							{isOpen && (
+								<div className={style.accordion}>
+									{/* 아코디언 컴포넌트 */}
+									<div className={style.accordionItem}>마이페이지</div>
+									<div
+										className={style.accordionItem}
+										onClick={logout}
+									>
+										로그아웃
+									</div>
+								</div>
+							)}
+						</div>
 					) : (
 						<Link
 							to='/signIn'

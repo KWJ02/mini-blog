@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 import style from './Card.module.css';
+import Title from 'components/title/Title';
 
 interface CardProps {
 	title?: string;
@@ -18,7 +19,7 @@ const Card = ({ ...props }: CardProps & CardCSSProps) => {
 				flex: props.flex,
 			}}
 		>
-			{props.title && <h1>{props.title}</h1>}
+			{props.title && <Title value={props.title} />}
 			<div>{props.value}</div>
 		</div>
 	);
