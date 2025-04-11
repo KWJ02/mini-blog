@@ -56,6 +56,7 @@ const Header = ({ ...props }: HeaderProps) => {
 			.post('/auth/logout')
 			.then(() => {
 				setIsOpen(false);
+				navigate('/', { replace: true });
 			})
 			.catch((e) => console.log(errorHandler(e)))
 			.finally(() => {
