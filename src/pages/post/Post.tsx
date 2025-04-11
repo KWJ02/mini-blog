@@ -1,6 +1,6 @@
-import { PostProps } from 'pages/postList/PostList';
+import { PostProps } from 'pages/postList';
 import style from './Post.module.css';
-import Title from 'components/title/Title';
+import Title from 'components/title';
 
 const Post = ({ ...props }: PostProps) => {
 	return (

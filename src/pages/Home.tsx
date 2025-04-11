@@ -1,16 +1,17 @@
 // rsc => rafce로 대체
-import Header from 'components/header/Header';
-import PostList from 'pages/postList/PostList';
-import Button from 'components/button/Button';
-import Layout from 'components/layout/Layout';
+import Header from 'components/header';
+import PostList from 'pages/postList';
+import Button from 'components/button';
+import Layout from 'components/layout';
 import write from 'assets/images/icon_write.svg';
 import axiosInstance from 'utils/axiosInstace';
 import errorHandler from 'utils/errorHandler';
 import { useState } from 'react';
-import { Modal } from 'components/modal/Modal';
-import Card from 'components/card/Card';
+import { Modal } from 'components/modal';
+import Card from 'components/card';
 import { useNavigate } from 'react-router-dom';
 
+// 에러 모달 전용 인터페이스 통합필요
 interface Error {
 	isActive: boolean;
 	message: string;

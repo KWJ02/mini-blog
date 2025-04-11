@@ -1,7 +1,7 @@
 import style from './Header.module.css';
 import backButton from 'assets/images/icon_backButton.svg';
 import iconUser from 'assets/images/icon_user.svg';
-import Title from 'components/title/Title';
+import Title from 'components/title';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // 항상 정의했던 고정된 위치로 이동
 import { useNavigate } from 'react-router-dom'; // 히스토리 기반으로 이동 (뒤로가기)

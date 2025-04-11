@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import style from './Card.module.css';
-import Title from 'components/title/Title';
+import Title from 'components/title';
 
 interface CardProps {
 	title?: string;

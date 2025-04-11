@@ -1,6 +1,6 @@
 import style from './Modal.module.css';
-import Layout from 'components/layout/Layout';
-import Overlay from 'components/layout/Overlay';
+import Layout from 'components/layout';
+import { Overlay } from 'components/layout';
 import Button from 'components/button/Button';
 import { useEffect } from 'react';
 

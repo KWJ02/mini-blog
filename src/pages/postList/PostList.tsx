@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import style from './PostList.module.css';
 import axiosInstace from 'utils/axiosInstace';
-import Post from 'pages/post/Post';
-import Layout from 'components/layout/Layout';
+import Post from 'pages/post';
+import Layout from 'components/layout';
 
 export interface PostProps {
 	id: number;

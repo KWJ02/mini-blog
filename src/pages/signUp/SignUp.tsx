@@ -1,14 +1,14 @@
 import style from './SignUp.module.css';
-import Title from 'components/title/Title';
-import Input from 'components/input/Input';
-import Button from 'components/button/Button';
+import Title from 'components/title';
+import Input from 'components/input';
+import Button from 'components/button';
 import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from 'utils/axiosInstace';
 import errorHandler from 'utils/errorHandler';
-import { Modal } from 'components/modal/Modal';
-import Card from 'components/card/Card';
-import Layout from 'components/layout/Layout';
+import { Modal } from 'components/modal';
+import Card from 'components/card';
+import Layout from 'components/layout';
 
 interface FormData {
 	userId: string;

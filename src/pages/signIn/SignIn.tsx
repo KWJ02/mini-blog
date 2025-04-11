@@ -1,13 +1,13 @@
 import style from './SignIn.module.css';
-import Title from 'components/title/Title';
-import Input from 'components/input/Input';
-import Button from 'components/button/Button';
+import Title from 'components/title';
+import Input from 'components/input';
+import Button from 'components/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, ChangeEvent } from 'react';
 import axiosInstance from 'utils/axiosInstace';
-import { Modal } from 'components/modal/Modal';
+import { Modal } from 'components/modal';
 import errorHandler from 'utils/errorHandler';
-import Card from 'components/card/Card';
+import Card from 'components/card';
 
 const SignIn = () => {
 	const [userId, setUserId] = useState<string>('');
