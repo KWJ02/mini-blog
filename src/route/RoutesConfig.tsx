@@ -2,21 +2,26 @@ import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import SignIn from 'pages/signIn/SignIn';
 import SignUp from 'pages/signUp/SignUp';
+import NewPost from 'pages/post/new';
 
 const RoutesConfig = () => {
 	return (
 		<Routes>
 			<Route
-				path="/"
+				path='/'
 				element={<Home />}
 			/>
 			<Route
-				path="/signIn"
+				path='/signIn'
 				element={<SignIn />}
 			/>
 			<Route
-				path="/signUp"
+				path='/signUp'
 				element={<SignUp />}
+			/>
+			<Route
+				path='/new'
+				element={<NewPost />}
 			/>
 		</Routes>
 	);

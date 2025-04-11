@@ -23,7 +23,7 @@ const Home = () => {
 	const newPost = () => {
 		axiosInstance
 			.get('/auth/check')
-			.then(() => {})
+			.then(() => navigator('/new'))
 			.catch((e) => setError({ isActive: true, message: errorHandler(e) as string }));
 	};
 	return (

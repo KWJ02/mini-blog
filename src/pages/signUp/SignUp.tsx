@@ -111,6 +111,7 @@ const SignUp = () => {
 		setFormData((prev) => ({ ...prev, userName: e.target.value.trim() }));
 	};
 
+	// 엔터키도 연동하기
 	const signUp = () => {
 		const isValid = checkInputValid(formData);
 
