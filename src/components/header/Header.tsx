@@ -2,7 +2,7 @@ import style from './Header.module.css';
 import backButton from 'assets/images/icon_backButton.svg';
 import iconUser from 'assets/images/icon_user.svg';
 import Title from 'components/title';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom'; // 항상 정의했던 고정된 위치로 이동
 import { useNavigate } from 'react-router-dom'; // 히스토리 기반으로 이동 (뒤로가기)
 import axiosInstance from 'utils/axiosInstace';
@@ -25,9 +25,9 @@ const Header = ({ ...props }: HeaderProps) => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState<UserInforms | null>(null);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const accordianRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		// 테스트 요청
 		axiosInstance
 			.get('/auth/check')
 			.then((res) => {
@@ -38,7 +38,17 @@ const Header = ({ ...props }: HeaderProps) => {
 				console.log(errorHandler(e));
 			});
 
-		return;
+		const handleClickOutside = (event: MouseEvent) => {
+			// ref.current가 존재하고, 클릭된 타겟이 그 내부에 포함되지 않는 경우
+			if (accordianRef.current && !accordianRef.current.contains(event.target as Node)) {
+				setIsOpen(false); // 닫기
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
 	}, []);
 
 	const logout = () => {
@@ -78,7 +88,10 @@ const Header = ({ ...props }: HeaderProps) => {
 								{user.userName} 님
 							</div>
 							{isOpen && (
-								<div className={style.accordion}>
+								<div
+									className={style.accordion}
+									ref={accordianRef}
+								>
 									{/* 아코디언 컴포넌트 */}
 									<div className={style.accordionItem}>마이페이지</div>
 									<div
