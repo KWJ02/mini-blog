@@ -27,7 +27,7 @@ class UserService {
 	static async registerUser(dto: UserDTO) {
 		// 1. 사용자 중복 체크
 		const existingUser = await UserRepository.findByUserId(dto.userId);
-		if (existingUser) {
+		if ((existingUser as any).length) {
 			throw new ConflictError(409, '이미 등록된 사용자 ID 입니다.');
 		}
 		// 2. 사용자 등록
