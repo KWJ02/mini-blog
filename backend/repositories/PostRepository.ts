@@ -5,12 +5,13 @@ interface Post {
 	id: number;
 	title: string;
 	content: string;
-	author: string;
+	userId: number;
+	userName: string;
 	date: string;
 }
 
-const PostModel = {
-	getAllPosts: async (): Promise<Post[]> => {
+class PostRepository {
+	static async findAll(): Promise<Post[]> {
 		// posts 테이블 내 user_name 칼럼삭제
 		const [rows] = await pool.query(
 			`
@@ -21,7 +22,7 @@ const PostModel = {
 			`
 		);
 		return rows as Post[];
-	},
-};
+	}
+}
 
-export default PostModel;
+export default PostRepository;
