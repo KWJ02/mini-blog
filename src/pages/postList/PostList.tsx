@@ -14,6 +14,7 @@ export interface PostProps {
 
 const PostList = () => {
 	const [posts, setPosts] = useState<PostProps[]>([]);
+	const [initHeight, setInitHeight] = useState<string>('100vh');
 
 	useEffect(() => {
 		axiosInstace
@@ -23,15 +24,20 @@ const PostList = () => {
 			})
 			.catch((e) => {
 				console.error(e);
+			})
+			.finally(() => {
+				setInitHeight('auto');
 			});
 	}, []);
 
 	return (
 		<Layout
+			width='100%'
 			display='flex'
 			alignItems='center'
 			justifyContent='center'
 			flexDirection='column'
+			height={initHeight}
 		>
 			<ul className={style.postList}>
 				{posts.map((post) => (

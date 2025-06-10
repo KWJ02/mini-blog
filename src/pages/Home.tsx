@@ -3,7 +3,6 @@ import Header from 'components/header';
 import PostList from 'pages/postList';
 import Button from 'components/button';
 import Layout from 'components/layout';
-import write from 'assets/images/icon_write.svg';
 import axiosInstance from 'utils/axiosInstace';
 import errorHandler from 'utils/errorHandler';
 import { useState } from 'react';
@@ -40,6 +39,7 @@ const Home = () => {
 					flex={1}
 				/>
 			</Modal>
+
 			<Header
 				value='Mini'
 				icon={true}
@@ -48,28 +48,25 @@ const Home = () => {
 			<Layout
 				margin='0 auto'
 				width='800px'
-				maxWidth='800px'
+				minWidth='800px'
 			>
 				<PostList />
 
 				<Layout
+					width='100%'
 					display='flex'
 					alignItems='center'
 					justifyContent='end'
 				>
 					<Button
 						marginBottom='20px'
-						value=''
-						imgSrc={write}
+						value='글쓰기'
 						width='60px'
-						height='60px'
-						padding='20px'
+						height='30px'
 						display='flex'
 						alignItems='center'
 						justifyContent='center'
-						backgroundColor='ivory'
 						cursor='pointer'
-						borderRadius='50%'
 						onClick={newPost}
 					/>
 				</Layout>

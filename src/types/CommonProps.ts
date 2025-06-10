@@ -3,8 +3,10 @@ import { CSSProperties } from 'react';
 export interface CommonProps {
 	width?: CSSProperties['width'];
 	maxWidth?: CSSProperties['maxWidth'];
+	minWidth?: CSSProperties['minWidth'];
 	height?: CSSProperties['height'];
 	maxHeight?: CSSProperties['maxHeight'];
+	minHeight?: CSSProperties['minHeight'];
 	borderRadius?: CSSProperties['borderRadius'];
 	backgroundColor?: CSSProperties['backgroundColor'];
 	color?: CSSProperties['color'];
