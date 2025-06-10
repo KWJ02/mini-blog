@@ -25,11 +25,14 @@ const NewPost = () => {
 					type='제목'
 					width='800px'
 					height='auto'
+					autoSizing={true}
+					maxHeight='100px'
 				/>
 				<Textarea
 					type='내용을 입력해주세요.'
 					width='800px'
 					height='400px'
+					autoSizing={false}
 				/>
 
 				<Layout
