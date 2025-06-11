@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { CommonProps } from 'types/CommonProps';
+import style from './Textarea.module.css';
 
 interface TextareaProps extends CommonProps {
-	type: string;
+	placeholder: string;
 	width: string;
 	height?: string;
 	autoSizing: boolean;
@@ -40,32 +41,19 @@ const Textarea = ({ height, autoSizing, maxHeight = 'none', ...props }: Textarea
 
 	return (
 		<div
+			className={style.root}
 			style={{
 				width: props.width,
-				border: '1px solid #ccc',
-				borderRadius: '4px',
-				padding: '8px',
-				fontSize: '1.25rem',
-				display: 'flex',
-				alignItems: 'center',
-				boxSizing: 'border-box',
-				backgroundColor: '#fff',
 			}}
 		>
 			<textarea
+				className={style.textarea}
 				ref={textareaRef}
 				onInput={handleInput}
 				style={{
-					width: '100%',
 					height: height || 'auto',
-					border: 'none',
-					outline: 'none',
-					resize: 'none',
-					fontSize: 'inherit',
-					lineHeight: '1.5',
-					backgroundColor: 'transparent',
 				}}
-				placeholder={props.type}
+				placeholder={props.placeholder}
 			/>
 		</div>
 	);

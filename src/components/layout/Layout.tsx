@@ -25,6 +25,7 @@ const Layout = ({ children, ...props }: LayoutProps) => {
 				zIndex: props.zIndex,
 				opacity: props.opacity,
 				backgroundColor: props.backgroundColor,
+				boxSizing: props.boxSizing,
 			}}
 		>
 			{children}

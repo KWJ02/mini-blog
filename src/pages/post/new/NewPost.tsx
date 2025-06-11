@@ -1,5 +1,5 @@
 import Header from 'components/header';
-import Textarea from 'components/textarea';
+import { Textarea, TextEditor } from 'components/textarea';
 import Layout from 'components/layout';
 import Button from 'components/button';
 
@@ -13,40 +13,54 @@ const NewPost = () => {
 			/>
 
 			<Layout
-				padding='20px 0 0 0'
+				width='100%'
 				display='flex'
 				flexDirection='column'
 				justifyContent='center'
 				alignItems='center'
-				gap={12}
-				width='100%'
 			>
-				<Textarea
-					type='제목'
-					width='800px'
-					height='auto'
-					autoSizing={true}
-					maxHeight='100px'
-				/>
-				<Textarea
-					type='내용을 입력해주세요.'
-					width='800px'
-					height='400px'
-					autoSizing={false}
-				/>
-
 				<Layout
-					width='800px'
+					padding='20px'
 					display='flex'
+					width='800px'
+					boxSizing='border-box'
+					flexDirection='column'
+					justifyContent='center'
 					alignItems='center'
-					justifyContent='end'
+					gap={12}
 				>
-					<Button
-						width='60px'
-						height='30px'
-						value='등록'
-						cursor='pointer'
+					<Textarea
+						placeholder='제목'
+						width='100%'
+						height='32px'
+						autoSizing={true}
 					/>
+
+					<TextEditor
+						placeholder='내용을 입력해주세요.'
+						width='100%'
+					/>
+
+					{/** ReactQuill의 toolbar가 42px, height를 400px로 주면
+					 * ql.container 영역이 400px로 전달이 되긴 하는데,
+					 * 전체 영역도 400px로 결정돼서, toolbar의 길이 42px만큼 위로 올라가는 현상때문에
+					 * 버튼이 먹힘.
+					 * 그래서 버튼을 담은 레이아웃 컴포넌트의 marginTop을 toolbar의 길이인 42px만큼 당김
+					 */}
+					<Layout
+						margin='42px 0 0 0'
+						width='100%'
+						display='flex'
+						alignItems='center'
+						justifyContent='end'
+					>
+						<Button
+							width='60px'
+							height='30px'
+							value='등록'
+							cursor='pointer'
+						/>
+					</Layout>
 				</Layout>
 			</Layout>
 		</Layout>

@@ -31,6 +31,7 @@ export interface CommonProps {
 	lineHeight?: CSSProperties['lineHeight'];
 	letterSpacing?: CSSProperties['letterSpacing'];
 	boxShadow?: CSSProperties['boxShadow'];
+	boxSizing?: CSSProperties['boxSizing'];
 	opacity?: CSSProperties['opacity'];
 	cursor?: CSSProperties['cursor'];
 	position?: CSSProperties['position'];
