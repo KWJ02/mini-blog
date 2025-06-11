@@ -1,24 +1,46 @@
 .root {
-	border: solid 1px black;
-	padding: 20px;
+	border: 1px solid #e0e0e0;
+	border-radius: 12px;
+	padding: 24px;
 	box-sizing: border-box;
 	cursor: pointer;
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 800px;
-	gap: 12px;
+	gap: 16px;
+	background-color: #fff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.root:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contentSection {
-	white-space: nowrap;
+	color: #444;
+	font-size: 1rem;
+	line-height: 1.6;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: #b8b7c1;
+	white-space: nowrap;
 }
 
 .footerSection {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	color: #777;
+	font-size: 0.875rem;
+}
+
+.authorSection {
+	font-weight: 500;
+	color: #5f6368;
+}
+
+.dateSection {
+	color: #9e9e9e;
 }
