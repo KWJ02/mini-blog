@@ -11,6 +11,31 @@ interface TextEditorProps extends CommonProps {
 const TextEditor = ({ ...props }: TextEditorProps) => {
 	const [value, setValue] = useState('');
 
+	const modules = {
+		toolbar: [
+			[{ header: [1, 2, 3, false] }],
+			['bold', 'italic', 'underline', 'strike'],
+			[{ list: 'ordered' }, { list: 'bullet' }],
+			['link', 'image', 'video'],
+			['code-block'],
+			['clean'],
+		],
+	};
+
+	const formats = [
+		'header',
+		'bold',
+		'italic',
+		'underline',
+		'strike',
+		'list',
+		'bullet',
+		'link',
+		'image',
+		'video',
+		'code-block',
+	];
+
 	return (
 		<Layout
 			width='100%'
@@ -23,7 +48,9 @@ const TextEditor = ({ ...props }: TextEditorProps) => {
 				style={{ height: '100%' }}
 				value={value}
 				onChange={setValue}
-				placeholder={props.placeholder}
+				modules={modules}
+				formats={formats}
+				placeholder='내용을 입력해주세요.'
 			/>
 		</Layout>
 	);

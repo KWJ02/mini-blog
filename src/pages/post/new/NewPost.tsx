@@ -32,14 +32,12 @@ const NewPost = () => {
 					<Textarea
 						placeholder='제목'
 						width='100%'
-						height='32px'
+						height='24px'
+						maxHeight='96px'
 						autoSizing={true}
 					/>
 
-					<TextEditor
-						placeholder='내용을 입력해주세요.'
-						width='100%'
-					/>
+					<TextEditor />
 
 					{/** ReactQuill의 toolbar가 42px, height를 400px로 주면
 					 * ql.container 영역이 400px로 전달이 되긴 하는데,

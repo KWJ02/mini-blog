@@ -17,7 +17,7 @@ const Textarea = ({ height, autoSizing, maxHeight = 'none', ...props }: Textarea
 		const textarea = textareaRef.current;
 		if (!textarea || !autoSizing) return;
 
-		textarea.style.height = 'auto';
+		textarea.style.height = height || 'auto';
 
 		const scrollHeight = textarea.scrollHeight;
 
@@ -33,7 +33,7 @@ const Textarea = ({ height, autoSizing, maxHeight = 'none', ...props }: Textarea
 		} else {
 			textarea.style.height = scrollHeight + 'px';
 		}
-	}, [autoSizing, maxHeight]);
+	}, [height, autoSizing, maxHeight]);
 
 	useEffect(() => {
 		handleInput();
