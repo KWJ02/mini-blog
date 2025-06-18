@@ -18,6 +18,10 @@ class PostRepository {
 		// posts 테이블 내 user_name 칼럼삭제
 		let conn: PoolConnection | null = null;
 		try {
+			/**
+			 * DATE_FORMAT(GREATEST(create_date, update_date), '%Y-%m-%d') AS date
+			 * 이건 나중에 PostView 컴포넌트에서 쓰는게 좋을듯
+			 */
 			conn = await pool.getConnection();
 			const [rows] = await conn.query(
 				`
@@ -27,7 +31,7 @@ class PostRepository {
 				content, 
 				p.user_id AS userId, 
 				u.user_name AS userName, 
-				DATE_FORMAT(GREATEST(create_date, update_date), '%Y-%m-%d') AS date
+				create_date AS date
 			FROM posts p
 			JOIN users u ON p.user_id = u.user_id
 			ORDER BY create_date DESC;
