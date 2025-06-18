@@ -16,6 +16,8 @@ const errorHandler = (error: AxiosError) => {
 			return responseMessage.message;
 		case 409:
 			return responseMessage.message;
+		case 500:
+			return 'Server Error';
 	}
 };
 

@@ -3,6 +3,8 @@ import { CommonProps } from 'types/CommonProps';
 import style from './Textarea.module.css';
 
 interface TextareaProps extends CommonProps {
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 	placeholder: string;
 	width: string;
 	height?: string;
@@ -49,6 +51,8 @@ const Textarea = ({ height, autoSizing, maxHeight = 'none', ...props }: Textarea
 			<textarea
 				className={style.textarea}
 				ref={textareaRef}
+				value={props.value}
+				onChange={props.onChange} // 여기서 부모의 setTitle 호출됨
 				onInput={handleInput}
 				style={{
 					height: height || 'auto',

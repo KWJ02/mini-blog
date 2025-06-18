@@ -1,12 +1,14 @@
 import Layout from 'components/layout';
-import { useState } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill-new';
 import 'react-quill/dist/quill.snow.css';
 import './TextEditor.css';
 
-const TextEditor = () => {
-	const [value, setValue] = useState('');
+interface TextEditorProps {
+	value: string;
+	onChange: (value: string) => void;
+}
 
+const TextEditor = ({ ...props }: TextEditorProps) => {
 	const modules = {
 		toolbar: [
 			[{ header: [1, 2, 3, false] }],
@@ -18,19 +20,7 @@ const TextEditor = () => {
 		],
 	};
 
-	const formats = [
-		'header',
-		'bold',
-		'italic',
-		'underline',
-		'strike',
-		'list',
-		'bullet',
-		'link',
-		'image',
-		'video',
-		'code-block',
-	];
+	const formats = ['header', 'bold', 'italic', 'underline', 'strike', 'list', 'link', 'image', 'video', 'code-block'];
 
 	return (
 		<Layout
@@ -40,8 +30,8 @@ const TextEditor = () => {
 			position='relative'
 		>
 			<ReactQuill
-				value={value}
-				onChange={setValue}
+				value={props.value}
+				onChange={props.onChange}
 				modules={modules}
 				formats={formats}
 				placeholder='내용을 입력해주세요.'
