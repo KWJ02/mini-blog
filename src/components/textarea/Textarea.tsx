@@ -52,6 +52,7 @@ const Textarea = ({ height, autoSizing, maxHeight = 'none', ...props }: Textarea
 				onInput={handleInput}
 				style={{
 					height: height || 'auto',
+					padding: '1px 4px',
 				}}
 				placeholder={props.placeholder}
 			/>

@@ -20,7 +20,7 @@ const NewPost = () => {
 				alignItems='center'
 			>
 				<Layout
-					padding='20px'
+					padding='40px 20px'
 					display='flex'
 					width='800px'
 					boxSizing='border-box'
@@ -39,14 +39,7 @@ const NewPost = () => {
 
 					<TextEditor />
 
-					{/** ReactQuill의 toolbar가 42px, height를 400px로 주면
-					 * ql.container 영역이 400px로 전달이 되긴 하는데,
-					 * 전체 영역도 400px로 결정돼서, toolbar의 길이 42px만큼 위로 올라가는 현상때문에
-					 * 버튼이 먹힘.
-					 * 그래서 버튼을 담은 레이아웃 컴포넌트의 marginTop을 toolbar의 길이인 42px만큼 당김
-					 */}
 					<Layout
-						margin='42px 0 0 0'
 						width='100%'
 						display='flex'
 						alignItems='center'
