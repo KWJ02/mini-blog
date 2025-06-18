@@ -16,6 +16,10 @@ const PostList = () => {
 	const [posts, setPosts] = useState<PostProps[]>([]);
 	const [initHeight, setInitHeight] = useState<string>('100vh');
 
+	const stripHtml = (html: string) => {
+		return html.replace(/<[^>]+>/g, '').trim();
+	};
+
 	useEffect(() => {
 		axiosInstace
 			.get('/post')
@@ -45,7 +49,7 @@ const PostList = () => {
 						<Post
 							id={post.id}
 							title={post.title}
-							content={post.content}
+							content={stripHtml(post.content)}
 							userName={post.userName}
 							date={post.date}
 						/>
