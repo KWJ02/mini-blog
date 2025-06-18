@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import PostController from '../controllers/postController';
+import { isLoggedIn } from '../middlewares/isLoggedIn';
 
 const router = Router();
 
@@ -9,5 +10,6 @@ const router = Router();
  * 게시물 목록을 가져오는 API
  */
 router.get('/', PostController.getAllPosts);
+router.post('/regist', isLoggedIn, PostController.registPost);
 
 export default router;

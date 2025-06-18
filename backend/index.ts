@@ -1,4 +1,5 @@
 // Route -> Controller -> Service -> Repository -> DB
+// api 뚫을땐 반대 방향으로 구현하면 됨
 // 하위 폴더 내부에서 npm을 따로 관리하고 싶으면 npm init -y를 먼저 실행하여 package.json을 생성시킨 후 npm 다운 받아야함.
 // module 시스템이 다르기 때문에 CommonJS에서는 require문 사용 가능, TypeScript에서는 사용x, import문 사용
 import express from 'express';
