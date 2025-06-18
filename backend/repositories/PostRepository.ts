@@ -21,10 +21,16 @@ class PostRepository {
 			conn = await pool.getConnection();
 			const [rows] = await conn.query(
 				`
-			select id, title, content, p.user_id as userId, u.user_name as userName, DATE_FORMAT(GREATEST(create_date, update_date), '%Y-%m-%d') as date
-			from posts p
-			join users u
-			on p.user_id = u.user_id;
+			SELECT 
+				id, 
+				title, 
+				content, 
+				p.user_id AS userId, 
+				u.user_name AS userName, 
+				DATE_FORMAT(GREATEST(create_date, update_date), '%Y-%m-%d') AS date
+			FROM posts p
+			JOIN users u ON p.user_id = u.user_id
+			ORDER BY create_date DESC;
 			`
 			);
 			return rows as Post[];
