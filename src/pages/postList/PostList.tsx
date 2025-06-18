@@ -3,6 +3,8 @@ import style from './PostList.module.css';
 import axiosInstace from 'utils/axiosInstace';
 import Post from 'pages/post';
 import Layout from 'components/layout';
+import { formatDistanceToNow } from 'date-fns';
+import { ko } from 'date-fns/locale';
 
 export interface PostProps {
 	id: number;
@@ -51,7 +53,7 @@ const PostList = () => {
 							title={post.title}
 							content={stripHtml(post.content)}
 							userName={post.userName}
-							date={post.date}
+							date={formatDistanceToNow(post.date, { addSuffix: true, locale: ko })}
 						/>
 					</li>
 				))}
