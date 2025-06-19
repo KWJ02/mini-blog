@@ -1,5 +1,5 @@
 // import PostDummy from '../dummy/dummy';
-import { ResultSetHeader } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import { PoolConnection } from 'mysql2/promise';
 import pool from '../config/db';
 import { postDTO } from '../types/post';
@@ -40,6 +40,24 @@ class PostRepository {
 			return rows as Post[];
 		} catch (error) {
 			throw new Error(error + '');
+		} finally {
+			conn?.release();
+		}
+	}
+
+	static async findById(id: number) {
+		let conn: PoolConnection | null = null;
+		try {
+			conn = await pool.getConnection();
+			const sql =
+				'SELECT title, content, user_id, GREATEST(create_date, update_date) as date FROM posts WHERE id = ?';
+			// execute 타입 ResultSetHeader는 INSERT, UPDATE, DELETE 전용
+			// SELECT 전용 타입은 RowDataPacket.
+			const [result] = await conn.execute<RowDataPacket[]>(sql, [id]);
+			return result;
+		} catch (err) {
+			console.error('SELECT 실패:', err);
+			throw err;
 		} finally {
 			conn?.release();
 		}
