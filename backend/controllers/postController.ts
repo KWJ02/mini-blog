@@ -8,7 +8,8 @@ interface SessionUser {
 }
 
 class PostController {
-	static async getAllPosts(res: Response): Promise<void> {
+	// 안쓰는건 아예 안쓰거나 그냥 _가 아니라 _req 나 _res로 안쓴다는 컨벤션 사용
+	static async getAllPosts(_req: Request, res: Response): Promise<void> {
 		try {
 			const posts = await PostService.getAllPosts();
 			res.status(200).json(posts);
