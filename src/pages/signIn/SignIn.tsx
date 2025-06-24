@@ -71,6 +71,11 @@ const SignIn = () => {
 					type='password'
 					value={userPw}
 					onChange={pwInput}
+					onKeyDown={(e) => {
+						if (e.code === 'Enter') {
+							login();
+						}
+					}}
 					marginTop='8px'
 					maxLength={20}
 					label='Password'

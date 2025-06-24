@@ -13,11 +13,12 @@ interface InputProps extends CommonProps {
 	label?: string;
 	error?: boolean;
 	errorMessage?: string;
-	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-	onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ width = '100%', height = '40px', onChange, onFocus, ...props }: InputProps) => {
+const Input = ({ width = '100%', height = '40px', onChange, onFocus, onKeyDown, ...props }: InputProps) => {
 	let inputError = props.error;
 	return (
 		<div
@@ -53,6 +54,7 @@ const Input = ({ width = '100%', height = '40px', onChange, onFocus, ...props }:
 					autoFocus={props.autoFocus}
 					onChange={onChange}
 					onFocus={onFocus}
+					onKeyDown={onKeyDown}
 				/>
 			</div>
 			{/** 에러 메세지 영역 */}
