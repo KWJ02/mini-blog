@@ -3,6 +3,7 @@ import Home from 'pages/Home';
 import SignIn from 'pages/signIn/SignIn';
 import SignUp from 'pages/signUp/SignUp';
 import NewPost from 'pages/post/new';
+import PostView from 'pages/post/postView';
 
 const RoutesConfig = () => {
 	return (
@@ -18,6 +19,10 @@ const RoutesConfig = () => {
 			<Route
 				path='/signUp'
 				element={<SignUp />}
+			/>
+			<Route
+				path='/post/:id'
+				element={<PostView />}
 			/>
 			<Route
 				path='/new'
