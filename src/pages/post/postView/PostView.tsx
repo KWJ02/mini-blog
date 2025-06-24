@@ -20,20 +20,15 @@ const PostView = () => {
 	const { id } = useParams();
 
 	useEffect(() => {
-		if (id) {
-			axiosInstance
-				.get(`/post/${id}`)
-				.then((res) => {
-					console.log(res);
-					setData(res.data[0]);
-				})
-				.catch((e) => console.log(errorHandler(e) as string));
-		}
-	}, [id]);
+		if (!id) return;
 
-	useEffect(() => {
-		console.log(data);
-	}, [data]);
+		axiosInstance
+			.get(`/post/${encodeURIComponent(id)}`)
+			.then((res) => {
+				setData(res.data[0]);
+			})
+			.catch((e) => console.log(errorHandler(e) as string));
+	}, [id]);
 
 	return (
 		<>
@@ -58,9 +53,11 @@ const PostView = () => {
 						<Title
 							fontSize='2rem'
 							value={data.title}
+							padding={12}
 						/>
 						<hr />
 						<div
+							style={{ height: '100%', minHeight: '400px', padding: '12px', boxSizing: 'border-box' }}
 							dangerouslySetInnerHTML={{
 								__html: DOMPurify.sanitize(data.content),
 							}}

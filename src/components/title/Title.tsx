@@ -5,7 +5,7 @@ interface TitleProps extends CommonProps {
 }
 
 const Title = ({ fontSize = '1.5rem', ...props }: TitleProps) => {
-	return <div style={{ fontSize: fontSize }}>{props.value}</div>;
+	return <div style={{ fontSize: fontSize, padding: props.padding }}>{props.value}</div>;
 };
 
 export default Title;

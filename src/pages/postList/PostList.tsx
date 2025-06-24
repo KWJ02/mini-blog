@@ -8,7 +8,7 @@ import { ko } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
 
 export interface PostProps {
-	id: number;
+	id: string;
 	title: string;
 	content: string;
 	userName: string;
@@ -48,8 +48,9 @@ const PostList = () => {
 			});
 	}, []);
 
-	const showDetail = (postId: number) => {
-		navigator(`/post/${postId}`);
+	const showDetail = (postId: string) => {
+		const encodedId = encodeURIComponent(postId);
+		navigator(`/post/${encodedId}`);
 	};
 
 	return (

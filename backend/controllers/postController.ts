@@ -24,7 +24,7 @@ class PostController {
 
 	static async getOnePosts(req: Request, res: Response): Promise<void> {
 		try {
-			const id = req.params.id;
+			const id = decodeURIComponent(req.params.id);
 			const posts = await PostService.getOnePost(id);
 			res.status(200).json(posts);
 		} catch (error) {
