@@ -72,9 +72,7 @@ const SignIn = () => {
 					value={userPw}
 					onChange={pwInput}
 					onKeyDown={(e) => {
-						if (e.code === 'Enter') {
-							login();
-						}
+						if (e.code === 'Enter') login();
 					}}
 					marginTop='8px'
 					maxLength={20}

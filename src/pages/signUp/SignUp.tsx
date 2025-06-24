@@ -195,6 +195,9 @@ const SignUp = () => {
 					type='text'
 					value={formData.userName}
 					onChange={userNameInput}
+					onKeyDown={(e) => {
+						if (e.code === 'Enter') signUp();
+					}}
 					marginTop='8px'
 					maxLength={30}
 					label='UserName'
